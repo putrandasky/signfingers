@@ -12,5 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'Signer\SignerController@index');
+Route::get('/', function () {
+    return view('apps.app');
+});
+Route::get('/signer', 'Signer\SignerController@index');
+Route::post('/generate', 'Signer\SignerController@generate');

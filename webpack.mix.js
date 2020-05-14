@@ -11,5 +11,33 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//    .sass('resources/sass/app.scss', 'public/css');
+
+
+   mix.webpackConfig({
+    resolve: {
+      extensions: ['.js', '.vue', '.json'],
+      alias: {
+        '@': path.resolve(__dirname, 'resources/js/')
+      },
+    },
+  });
+  mix
+  .js('resources/js/app.js', 'public/js/app.js')
+
+
+
+
+  if (mix.inProduction()) {
+    mix.version();
+    mix.options({
+      terser: {
+        terserOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      }
+    });
+  }
