@@ -2118,6 +2118,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2167,7 +2174,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       pinchable: true,
       // ["draggable", "resizable", "scalable", "rotatable"]
       origin: false
-    }), _defineProperty(_ref, "elementTop", 0), _defineProperty(_ref, "elementLeft", 0), _defineProperty(_ref, "parentWidth", 0), _defineProperty(_ref, "parentHeight", 0), _defineProperty(_ref, "fileUrl", null), _ref;
+    }), _defineProperty(_ref, "elementTop", 0), _defineProperty(_ref, "elementLeft", 0), _defineProperty(_ref, "parentWidth", 0), _defineProperty(_ref, "parentHeight", 0), _defineProperty(_ref, "fileUrl", null), _defineProperty(_ref, "srcSignature", null), _defineProperty(_ref, "padOptions", {
+      penColor: 'blue'
+    }), _ref;
   },
   mounted: function mounted() {//   window.addEventListener('resize', this.handleResize())
   },
@@ -2193,6 +2202,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         data = _this$$refs$signature.data;
 
     this.signData = data;
+    this.srcSignature = data;
     console.log(isEmpty);
     console.log(data);
   },
@@ -53188,8 +53198,8 @@ var render = function() {
                       h: _vm.height,
                       x: _vm.left,
                       y: _vm.top,
-                      minHeight: 10,
-                      minWidth: 10,
+                      minHeight: 30,
+                      minWidth: 50,
                       parent: true
                     },
                     on: {
@@ -53199,7 +53209,24 @@ var render = function() {
                       dragstop: _vm.onResizeStop
                     }
                   },
-                  [_c("p", [_vm._v(".")])]
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          display: "table-cell",
+                          "vertical-align": "middle",
+                          "background-color": "yellow",
+                          padding: "3px"
+                        },
+                        style: {
+                          width: _vm.width + "px",
+                          height: _vm.height + "px"
+                        }
+                      },
+                      [_vm._v("\n                SIGN  HERE\n                ")]
+                    )
+                  ]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -53244,7 +53271,11 @@ var render = function() {
           ? _c("VueSignaturePad", {
               ref: "signaturePad",
               staticStyle: { border: "1px solid grey" },
-              attrs: { width: _vm.padWidth, height: _vm.padHeight }
+              attrs: {
+                width: _vm.padWidth,
+                height: _vm.padHeight,
+                options: _vm.padOptions
+              }
             })
           : _vm._e()
       ],

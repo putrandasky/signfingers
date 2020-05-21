@@ -61,8 +61,13 @@ class SignerController extends Controller
         $item = json_decode($request->input('itemInput'), true);
 // return $item['elementTop'];
         $openedFile = $request->file('itemFile')->getRealPath();
+        $fileName = pathinfo($request->file('itemFile')->getClientOriginalName(), PATHINFO_FILENAME);
         $pagecount = $fpdi->setSourceFile($openedFile);
         $signedPage = 1;
+
+        // $data = explode( ',', $request->input('itemSignData') );
+
+        // $dataImage = utf8_encode( $data[ 1 ] );
 
         for ($i = 0; $i < $pagecount; $i++) {
             if ($i == ($signedPage - 1)) {
@@ -74,7 +79,7 @@ class SignerController extends Controller
                 $targetX = $item['elementLeft'] / $item['parentWidth'] * $sizeTemplate['width'];
                 $targetHeight = $item['height'] / $item['parentHeight'] * $sizeTemplate['height'];
                 $targetWidth = $item['width'] / $item['parentWidth'] * $sizeTemplate['width'];
-                $fpdi->Image($this->base64_to_jpeg($request->input('itemSignData'),'sign.png'), $targetX - ($targetWidth / 2), $targetY - ($targetHeight / 2), $targetWidth, $targetHeight);
+                $fpdi->Image($request->input('itemSignData'), $targetX - ($targetWidth / 2), $targetY - ($targetHeight / 2), $targetWidth, $targetHeight,'PNG');
             }
             if ($i != ($signedPage - 1)) {
                 $fpdi->AddPage();
@@ -83,7 +88,10 @@ class SignerController extends Controller
             }
 
         }
-        $fpdi->Output('test.pdf', "D");
+        $fpdi->Output("{$fileName}-SIGNED.pdf", "D");
+
+        return response()->json(['token' => 'test', 'status' => 'new'], 200);
+
     }
     public function base64_to_jpeg($base64_string, $output_file) {
         // open the output file for writing
@@ -92,13 +100,13 @@ class SignerController extends Controller
         // split the string on commas
         // $data[ 0 ] == "data:image/png;base64"
         // $data[ 1 ] == <actual base64 string>
-        $data = explode( ',', $base64_string );
+        // $data = explode( ',', $base64_string );
 
         // we could add validation here with ensuring count( $data ) > 1
-        fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+        // fwrite( $ifp, base64_decode( $data[ 1 ] ) );
 
         // clean up the file resource
-        fclose( $ifp );
+        // fclose( $ifp );
 
         return $output_file;
     }

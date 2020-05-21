@@ -10,10 +10,17 @@
           style="background-color: green; color: white; text-align: center"
           :style="{ width: loadedRatio * 100 + '%' }"
         >{{ Math.floor(loadedRatio * 100) }}%</div> -->
-                <vue-draggable-resizable style="z-index:99;text-align:center;display:table" v-if="showDrager" :w="width" :h="height" :x="left" :y="top" :minHeight="10" :minWidth="10"
+                <vue-draggable-resizable style="z-index:99;text-align:center;display:table" v-if="showDrager" :w="width" :h="height" :x="left" :y="top" :minHeight="30" :minWidth="50"
                     @dragging="onDrag" @resizing="onResize" :parent="true" v-on:resizestop="onResizeStop"
                     v-on:dragstop="onResizeStop">
-                    <p>.</p>
+                    <div  style="display:table-cell;vertical-align:middle;background-color:yellow;padding:3px"
+                    :style="{width:width+'px',height:height+'px'}"
+                    >
+                    SIGN  HERE
+                    </div>
+                    <!-- <img  style="display:table-cell;vertical-align:middle" :src="srcSignature"
+                    :style="{width:width+'px',height:height+'px'}"
+                    > -->
                 </vue-draggable-resizable>
 
                 <!-- <VueDragResize
@@ -60,7 +67,7 @@
         </div>
         <div style="position:relative;width:50%;float:left" ref="parentPad">
             <button style="background-color:blue; padding;5px" @click="saveSignature">Save</button>
-            <VueSignaturePad v-if="showPad" style="border:1px solid grey" :width="padWidth" :height="padHeight"
+            <VueSignaturePad v-if="showPad" style="border:1px solid grey" :width="padWidth" :height="padHeight" :options="padOptions"
                 ref="signaturePad" />
         </div>
     </div>
@@ -119,7 +126,11 @@
                 elementLeft: 0,
                 parentWidth: 0,
                 parentHeight: 0,
-                fileUrl: null
+                fileUrl: null,
+                srcSignature:null,
+                padOptions:{
+                    penColor:'blue'
+                }
             };
         },
         mounted: function () {
@@ -152,6 +163,7 @@
                     data
                 } = this.$refs.signaturePad.saveSignature()
                 this.signData = data
+                this.srcSignature = data
                 console.log(isEmpty);
                 console.log(data);
             },
