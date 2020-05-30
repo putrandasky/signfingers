@@ -16,6 +16,11 @@ const mix = require('laravel-mix');
 
 
    mix.webpackConfig({
+    devServer: {
+      proxy: {
+          '*': 'http://localhost:8000'
+      }
+  },
     resolve: {
       extensions: ['.js', '.vue', '.json'],
       alias: {
@@ -24,13 +29,13 @@ const mix = require('laravel-mix');
     },
   });
   mix
-  .js('resources/js/app.js', 'public/js/app.js')
+  .js('resources/js/signerapp/app.js', 'public/js/signerapp.js')
 
 
 
 
   if (mix.inProduction()) {
-    mix.version();
+mix.version();
     mix.options({
       terser: {
         terserOptions: {

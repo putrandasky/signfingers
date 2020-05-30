@@ -63,7 +63,7 @@ class SignerController extends Controller
         $openedFile = $request->file('itemFile')->getRealPath();
         $fileName = pathinfo($request->file('itemFile')->getClientOriginalName(), PATHINFO_FILENAME);
         $pagecount = $fpdi->setSourceFile($openedFile);
-        $signedPage = 1;
+        $signedPage = $item['page'];
 
         // $data = explode( ',', $request->input('itemSignData') );
 

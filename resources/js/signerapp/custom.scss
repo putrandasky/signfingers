@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$yellow: #F5CB5C;
+$white : #E8EDDF;
+$c-dark :#242423;
+$c-dark-grey :#333533;
+$c-grey :#CFDBD5;
+$c-white :#E8EDDF;
+
+$body-bg : $c-dark;
+// $colors:(
+//     "white":      #E8EDDF,
+// );
+$font-family-base: 'Roboto',
+sans-serif;
+$btn-font-family: 'Montserrat',
+sans-serif;
+
+$theme-colors: ("c-dark": $c-dark,
+  "c-dark-grey": $c-dark-grey,
+  "c-grey": $c-grey,
+  "c-white": $c-white,
+  "black": #000,
+  "blue" :#007bff,
+  "green" :#28a745);
+
+.signature-pad-modal .modal-content {
+  background-color: $c-dark;
+
+  .modal-header {
+    background-color: $c-dark;
+    border-color: $c-dark;
+    color: $c-white;
+  }
+
+  .modal-body {
+    background-color: $c-dark;
+    padding-top: unset;
+    padding-bottom: unset;
+  }
+
+  .modal-footer {
+    background-color: $c-dark;
+    border-color: $c-dark;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  ;
+}
+
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
+$fa-font-path: '~font-awesome/fonts/';
+@import "~font-awesome/scss/font-awesome.scss";
