@@ -16,10 +16,14 @@ import App from './components/App';
 import 'vue-material-design-icons/styles.css';
 import VueSignaturePad from "vue-signature-pad";
 import VueMq from 'vue-mq';
-
+import Vuex from 'vuex'
+import {
+  store
+} from './store/index';
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueSignaturePad);
+Vue.use(Vuex)
 Vue.use(VueMq, {
   breakpoints: {
     xs: 576,
@@ -32,5 +36,6 @@ Vue.use(VueMq, {
 
 const app = new Vue({
   el: '#app',
+  store,
   render: h => h(App),
 });

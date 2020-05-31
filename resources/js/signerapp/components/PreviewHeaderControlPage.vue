@@ -2,7 +2,7 @@
   <b-card-header header-border-variant="dark" header-bg-variant="dark" class=" py-0 ">
     <div class="text-white w-100 text-center">
       <small>
-        {{data.fileName}}
+        {{fileName}}
       </small>
     </div>
     <div class="d-flex justify-content-end align-items-center">
@@ -15,9 +15,9 @@
           Back
         </b>
       </b-btn>
-      <b-input class="mx-2" size="sm" type="number" :min="1" :max="data.pageCount" style="max-width:40px" v-model.number="currentPage" @input="handleGoClick"></b-input>
+      <b-input class="mx-2" size="sm" type="number" :min="1" :max="pageCount" style="max-width:40px" v-model.number="currentPage" @input="handleGoClick"></b-input>
       <span class="text-white ">
-        / {{data.pageCount}}
+        / {{pageCount}}
       </span>
 
       <b-btn class="pr-1" variant="outline-dark" @click="handlePrevClick">
@@ -57,14 +57,16 @@
   import {
     EventBus
   } from "@/signerapp/event.js";
+  import {
+    mapState,
+    mapActions
+  } from 'vuex'
   export default {
     name: 'PreviewHeaderControlPage',
-    props: ["data"],
+    // props: ["data"],
 
     data: function() {
       return {
-        fileName: "",
-        currentPage: this.data.currentPage,
         oldCurrentPage: 0,
       }
     },
@@ -74,25 +76,53 @@
       //   this.fileName = data.name
       // })
     },
+    computed: {
+      currentPage: {
+        get() {
+          return this.$store.state.dataPdf.currentPage
+        },
+        set(value) {
+
+          this.setPdfCurrentPage(value)
+        }
+      },
+      ...mapState({
+        fileName: state => state.dataPdf.fileName,
+        pageCount: state => state.dataPdf.pageCount,
+      })
+    },
     methods: {
+      ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio']),
       handleSelectClick() {
-        this.$emit('onSelectClick')
+        // this.$emit('onSelectClick')
+        this.setStep(3)
+
       },
       handleGoClick() {
 
-        this.currentPage < 1 || this.currentPage > this.data.pageCount ? '' :
-          this.$emit('onGoClick', this.currentPage)
+        this.currentPage < 1 || this.currentPage > this.pageCount ? '' :
+          this.setPdfCurrentPage(this.currentPage)
       },
       handlePrevClick() {
-        this.currentPage <= 1 ? '' : this.currentPage--
-        this.$emit('onPrevClick', this.currentPage)
+        this.currentPage <= 1 ? '' : this.setPdfCurrentPage(this.currentPage - 1)
+
       },
       handleNextClick() {
-        this.currentPage >= this.data.pageCount ? '' : this.currentPage++
-        this.$emit('onNextClick', this.currentPage)
+        this.currentPage >= this.pageCount ? '' : this.setPdfCurrentPage(this.currentPage + 1)
       },
       handleUndoFileLoaded() {
-        EventBus.$emit('undoFileLoaded')
+        this.setFileUploaded(false)
+        let dataPdf = {
+          fileName: '',
+          src: null,
+          raw: null,
+        }
+        this.setDataPdf(dataPdf)
+        this.setPdfTotalPage(null)
+        this.setPdfCurrentPage(1)
+        this.setPdfLoadedRatio(null)
+        this.setStep(1)
+        // EventBus.$emit('undoFileLoaded')
       },
     },
   }

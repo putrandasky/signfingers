@@ -26,6 +26,10 @@
   import {
     EventBus
   } from "@/signerapp/event.js";
+  import {
+    mapState,
+    mapActions
+  } from 'vuex'
   export default {
     name: 'PreviewHeaderControlTarget',
     data: function() {
@@ -33,15 +37,31 @@
     },
     created() {},
     methods: {
+      ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio', 'setDragger', 'refreshDraggerInstance', 'setShowSignatureModal']),
+      bpValue(lgUpValue, lgDownValue) {
+        return ['lg', 'xl'].includes(this.$mq) ? lgUpValue : lgDownValue
+      },
       handleCancelClick() {
-        this.$emit('onCancelClick')
+        // this.$emit('onCancelClick')
+        this.setStep(2)
       },
       handleResetClick() {
-        EventBus.$emit('onResetClick')
+        // EventBus.$emit('onResetClick')
+        let dragger = {
+          width: this.bpValue(80, 50),
+          height: this.bpValue(40, 25),
+          top: 0,
+          left: 0,
+          elementTop: this.bpValue(40, 25) / 2,
+          elementLeft: this.bpValue(80, 50) / 2
+        }
+        this.setDragger(dragger)
+        this.refreshDraggerInstance()
 
       },
       handleApplyClick() {
-        EventBus.$emit('onApplyTargetArea')
+        this.setShowSignatureModal(true)
+        // EventBus.$emit('onApplyTargetArea')
       },
     },
   }

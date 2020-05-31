@@ -11,9 +11,13 @@
   </div>
 </template>
 <script>
+  import {
+    mapState,
+    mapActions
+  } from 'vuex'
   export default {
     name: 'Stepper',
-    props: ["step"],
+    // props: ["step"],
     data: function() {
       return {
         data: [{
@@ -36,6 +40,9 @@
       }
     },
     created() {},
+    computed: mapState({
+      step: state => state.step,
+    }),
     methods: {},
   }
 </script>

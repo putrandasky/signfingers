@@ -1,5 +1,5 @@
 <template>
-  <b-modal v-model="isModalShow" modal-class="signature-pad-modal" :hide-header-close="true" :no-close-on-backdrop="true" centered ok-variant="warning" @hidden="handleHiddenModal" @shown="handleShowModal" @ok="saveSignature" @cancel="handleCancelModal">
+  <b-modal v-model="isShowShowSignatureModal" modal-class="signature-pad-modal" :hide-header-close="true" :no-close-on-backdrop="true" centered ok-variant="warning" @hidden="handleHiddenModal" @show="handleShowModal" @ok="saveSignature" @cancel="handleCancelModal">
     <template v-slot:modal-title>
       <b>
         Draw Your Signature
@@ -39,17 +39,20 @@
 </template>
 <script>
   import debounce from './package/debounce'
-
+  import {
+    mapState,
+    mapActions
+  } from 'vuex'
   import {
     EventBus
   } from "@/signerapp/event.js";
   export default {
     name: 'ModalSignaturePad',
-    props: ["draggerData"],
+    // props: ["draggerData"],
     components: {},
     data: function() {
       return {
-        isModalShow: false,
+        // isModalShow: false,
         showPad: false,
         tempDataSignature: null,
         padWidth: "100%",
@@ -77,45 +80,62 @@
     },
     created() {
       EventBus.$on('onResizeStopDragger', data => {
-          // let parentPadWidth = this.$refs.parentPad.offsetWidth;
-          // this.padWidth = parentPadWidth.toString() + "px";
-          // this.padHeight =
-          //   (parentPadWidth / (this.width / this.height)).toString() + "px";
-        }),
-        EventBus.$on('onCancelDownloadClick', data => {
-          this.isModalShow = true
-          let self = this
-          let penColor = this.padOptions.penColor
-          setTimeout(() => {
-            this.padAdjustment()
-            this.padOptions.penColor = penColor
-            this.showPad = true
-            setTimeout(() => {
-              self.$refs.signaturePad.fromData(self.tempDataSignature)
+        // let parentPadWidth = this.$refs.parentPad.offsetWidth;
+        // this.padWidth = parentPadWidth.toString() + "px";
+        // this.padHeight =
+        //   (parentPadWidth / (this.width / this.height)).toString() + "px";
+      })
+      // EventBus.$on('onCancelDownloadClick', data => {
+      //   this.isModalShow = true
+      //   let self = this
+      //   let penColor = this.padOptions.penColor
+      //   setTimeout(() => {
+      //     this.padAdjustment()
+      //     this.padOptions.penColor = penColor
+      //     this.showPad = true
+      //     setTimeout(() => {
+      //       self.$refs.signaturePad.fromData(self.tempDataSignature)
 
-            }, 1);
-          }, 1);
-        }),
-        EventBus.$on('onApplyTargetArea', data => {
-          this.isModalShow = true
-          let penColor = 'black'
-          setTimeout(() => {
+      //     }, 1);
+      //   }, 1);
+      // })
+      // EventBus.$on('onApplyTargetArea', data => {
+      //   this.isModalShow = true
+      //   let penColor = 'black'
+      //   setTimeout(() => {
 
 
-            this.padAdjustment()
-            this.padOptions.penColor = penColor
-            this.showPad = true
+      //     this.padAdjustment()
+      //     this.padOptions.penColor = penColor
+      //     this.showPad = true
 
-            console.log("onApplyTargetArea -> this.$refs.signaturePad", this.$refs.signaturePad)
-          }, 1);
-        })
+      //     console.log("onApplyTargetArea -> this.$refs.signaturePad", this.$refs.signaturePad)
+      //   }, 1);
+      // })
     },
     mounted() {
       this.$nextTick(function() {
         window.addEventListener('resize', this.refreshInstance);
       })
     },
+    computed: {
+      isShowShowSignatureModal: {
+        get() {
+          return this.$store.state.isShowShowSignatureModal
+        },
+        set(value) {
+          this.setShowSignatureModal(value)
+        }
+      },
+      ...mapState({
+        dragger: state => state.dragger,
+        fileName: state => state.dataPdf.fileName,
+        pageCount: state => state.dataPdf.pageCount,
+        currentPage: state => state.dataPdf.currentPage,
+      })
+    },
     methods: {
+      ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setDragger', 'setDraggerBehavior', 'setShowSignatureModal', 'setSignature']),
       refreshInstance: debounce(function() {
         if (this.showPad) {
           let self = this
@@ -130,6 +150,21 @@
         }
       }, 100),
       handleShowModal() {
+
+        let self = this
+        let penColor = this.padOptions.penColor || 'black'
+        setTimeout(() => {
+          this.padAdjustment()
+          this.padOptions.penColor = penColor
+          this.showPad = true
+          if (self.tempDataSignature) {
+            setTimeout(() => {
+              self.$refs.signaturePad.fromData(self.tempDataSignature)
+            }, 1);
+          }
+        }, 1);
+
+
         //set height and width signature pad relative to dragger
         // let parentPadWidth = this.$refs.parentPad.offsetWidth;
         // this.padWidth = parentPadWidth.toString() + "px";
@@ -137,7 +172,14 @@
         //   (parentPadWidth / (this.width / this.height)).toString() + "px";
       },
       handleCancelModal() {
-        EventBus.$emit('onCancelModalSignature')
+        // EventBus.$emit('onCancelModalSignature')
+        let behavior = {
+          isResizeable: true,
+          isDraggable: true
+        }
+        this.setDraggerBehavior(behavior)
+        this.tempDataSignature = null
+        this.setSignature(null)
       },
       saveSignature() {
         const {
@@ -145,18 +187,33 @@
           data
         } = this.$refs.signaturePad.saveSignature()
         this.tempDataSignature = this.$refs.signaturePad.toData()
-        EventBus.$emit('onSaveSigature', data)
-
-
+        // EventBus.$emit('onSaveSigature', data)
+        let behavior = {
+          isResizeable: false,
+          isDraggable: false
+        }
+        this.setDraggerBehavior(behavior)
+        this.setSignature(data)
+        this.setStep(4)
       },
       refreshInstanceSignPad() {
         this.showPad = false
+        this.$refs.signaturePad.clearSignature()
+        this.tempDataSignature = null
+        this.setSignature(null)
         this.$nextTick(() => {
+
           this.showPad = true
         });
       },
       handleUndoButton() {
         this.$refs.signaturePad.undoSignature()
+        this.tempDataSignature = this.$refs.signaturePad.toData()
+        this.$nextTick(function() {
+          this.$refs.signaturePad.fromData(this.tempDataSignature)
+
+        })
+
       },
       handleChangeColorButton(color) {
         if (this.padOptions.penColor == color) {
@@ -191,7 +248,7 @@
 
         this.padWidth = parentPadWidth.toString() + "px";
         this.padHeight =
-          (parentPadWidth / (this.draggerData.width / this.draggerData.height)).toString() + "px"
+          (parentPadWidth / (this.dragger.width / this.dragger.height)).toString() + "px"
       },
       handleHiddenModal() {
         this.showPad = false
