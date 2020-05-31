@@ -1,20 +1,23 @@
 <template>
-  <b-card-header header-border-variant="dark" header-bg-variant="dark" class=" p-0 d-flex justify-content-center align-items-center">
-    <b-btn-group class="w-100 ">
-      <b-btn variant="c-white rounded-0 rounded-top" @click="handleCancelClick">
+  <preview-control>
+    <div slot="content" class="py-2 ">
+      <b-btn size="sm" variant="secondary " @click="handleCancelClick">
         <i class="fa fa-close"></i>
         <b>
           Cancel
         </b>
       </b-btn>
-      <b-btn variant="warning rounded-0" @click="handleDownloadClick">
-        <i class="fa fa-download"></i>
-        <b>
-          Download
-        </b>
-      </b-btn>
-    </b-btn-group>
-  </b-card-header>
+      <b-overlay :show="busy" rounded opacity="0.6" spinner-small spinner-variant="c-dark" class="d-inline-block">
+        <b-btn size="sm" variant="warning " @click="handleDownloadClick">
+          <i class="fa fa-download"></i>
+          <b>
+            Download
+          </b>
+        </b-btn>
+      </b-overlay>
+    </div>
+
+  </preview-control>
 </template>
 <script>
   import {
@@ -25,10 +28,19 @@
     mapState,
     mapActions
   } from 'vuex'
+  import PreviewControl from './slots/PreviewControl'
+
   export default {
     name: 'PreviewHeaderControlDownload',
+    components: {
+      PreviewControl
+    },
     data: function() {
-      return {}
+      return {
+        busy: false,
+        isShowEndModal: false
+
+      }
     },
     created() {},
     computed: mapState({
@@ -38,15 +50,18 @@
       dataPdf: state => state.dataPdf,
     }),
     methods: {
-      ...mapActions(['setShowSignatureModal', 'setStep']),
+      ...mapActions(['setShowSignatureModal', 'setStep', 'setShowModal', 'setFileSigned']),
       handleCancelClick() {
         // EventBus.$emit('onCancelDownloadClick')
         this.setShowSignatureModal(true)
+        this.busy = false
+
         this.setStep(3)
       },
 
       handleDownloadClick() {
-        EventBus.$emit('onDownloadClick')
+        // EventBus.$emit('onDownloadClick')
+        this.busy = true
         let self = this;
         let input = {
           elementTop: this.dragger.elementTop,
@@ -73,12 +88,30 @@
             let ContentDisposition = response.headers["content-disposition"];
             let splitedContentDisposition = ContentDisposition.split('"');
             FileSaver.saveAs(response.data, splitedContentDisposition[1]);
-            console.log(response.data);
+            this.busy = false
+            // this.$bvToast.show('download-toast')
+            // this.isShowEndModal = true
+            this.$bvModal.show('endModal')
+            this.setFileSigned(true)
+            // this.setShowModal({
+            //   name: 'endModal',
+            //   value: true
+            // })
+
           })
           .catch(error => {
             console.log(error);
           });
       },
+      stringToHTML(str) {
+        // If DOMParser is supported, use it
+
+
+        // Otherwise, fallback to old-school method
+        var dom = document.createElement('div');
+        dom.innerHTML = str;
+        return dom;
+      }
     },
   }
 </script>

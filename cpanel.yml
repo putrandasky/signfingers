@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/alterfin/public_html/subdomain/signfingers
+    - /bin/cp -R * $DEPLOYPATH

@@ -1,26 +1,27 @@
 <template>
-  <b-card-header header-border-variant="dark" header-bg-variant="dark" class=" p-0 d-flex justify-content-center align-items-center">
-    <b-btn-group class="w-100 ">
-      <b-btn variant="c-white rounded-0 rounded-top" @click="handleCancelClick">
+  <preview-control>
+
+    <div slot="content" class="py-2 ">
+      <b-btn size="sm" variant="secondary" @click="handleCancelClick">
         <i class="fa fa-close"></i>
         <b>
           Cancel
         </b>
       </b-btn>
-      <b-btn variant="c-white" @click="handleResetClick">
+      <b-btn size="sm" variant="c-white" @click="handleResetClick">
         <i class="fa fa-refresh"></i>
         <b>
           Reset
         </b>
       </b-btn>
-      <b-btn variant="warning rounded-0" @click="handleApplyClick">
+      <b-btn size="sm" variant="warning " @click="handleApplyClick">
         <i class="fa fa-check"></i>
         <b>
           Apply
         </b>
       </b-btn>
-    </b-btn-group>
-  </b-card-header>
+    </div>
+  </preview-control>
 </template>
 <script>
   import {
@@ -30,8 +31,12 @@
     mapState,
     mapActions
   } from 'vuex'
+  import PreviewControl from './slots/PreviewControl'
   export default {
     name: 'PreviewHeaderControlTarget',
+    components: {
+      PreviewControl
+    },
     data: function() {
       return {}
     },
@@ -42,11 +47,9 @@
         return ['lg', 'xl'].includes(this.$mq) ? lgUpValue : lgDownValue
       },
       handleCancelClick() {
-        // this.$emit('onCancelClick')
         this.setStep(2)
       },
       handleResetClick() {
-        // EventBus.$emit('onResetClick')
         let dragger = {
           width: this.bpValue(80, 50),
           height: this.bpValue(40, 25),
@@ -61,7 +64,6 @@
       },
       handleApplyClick() {
         this.setShowSignatureModal(true)
-        // EventBus.$emit('onApplyTargetArea')
       },
     },
   }

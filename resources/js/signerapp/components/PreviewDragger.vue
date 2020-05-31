@@ -28,59 +28,16 @@
     },
     data: function() {
       return {
-        // isResizeable: true,
-        // isDraggable: true,
-        // isShown: true,
-        // srcSignature: null,
-        // dragger: {
-        //   width: 75,
-        //   height: 45,
-        //   top: 0,
-        //   left: 0,
-        //   elementTop: 0,
-        //   elementLeft: 0,
-        // },
-        // targetProperties: {
 
-        //   parentWidth: this.parentPage.width,
-        //   parentHeight: this.parentPage.height,
-        // }
       }
     },
     created() {
-      // this.dragger.elementTop = this.dragger.top + this.dragger.height / 2;
-      // this.dragger.elementLeft = this.dragger.left + this.dragger.width / 2;
-      // this.dragger.width = this.bpValue(80, 50)
-      // this.dragger.height = this.bpValue(40, 25)
+
       this.handleResizeStop()
-      // EventBus.$on('onSaveSigature', data => {
-      //   this.srcSignature = data;
-      //   this.isResizeable = false
-      //   this.isDraggable = false
-      // })
-      // EventBus.$on('onCancelModalSignature', data => {
-      //   this.srcSignature = null
-      //   this.isResizeable = true
-      //   this.isDraggable = true
-      // })
 
-      // EventBus.$on('onResetClick', (data) => {
-      //   console.log('test');
-      //   this.dragger.width = this.bpValue(80, 50)
-      //   this.dragger.height = this.bpValue(40, 25)
-      //   this.dragger.top = 0
-      //   this.dragger.left = 0
-      //   this.isShown = false
-      //   setTimeout(() => {
-      //     this.isShown = true
-
-      //   }, 1);
-      // })
     },
     mounted() {
       this.$nextTick(function() {
-        // window.addEventListener('resize', this.refreshInstance);
-        // window.addEventListener('resize', this.updateDimension);
 
 
       })
@@ -110,11 +67,6 @@
         let draggerelementLeft = draggerleft + draggerwidth / 2;
         console.log('parentpagewidth');
 
-        // this.$store.commit('DRAGGER', {
-        //   left: draggerleft,
-        //   width: draggerwidth,
-        //   elementLeft: draggerelementLeft,
-        // })
         let dragger = {
           width: draggerwidth,
           height: this.dragger.height,
@@ -124,16 +76,8 @@
           elementLeft: draggerelementLeft,
         }
         this.setDragger(dragger)
-        console.table({
-          'oldLeft': oldDraggerLeft,
-          'newLeft': draggerleft,
-          'oldWidth': oldDraggerWidth,
-          'newWidth': draggerwidth,
-          'oldParentWidth': oldVal,
-          'newParentWidth': newVal,
-        })
+
         this.refreshDraggerInstance()
-        // this.refreshInstance()
 
       }, 100),
       'parentPage.height': debounce(function(newVal, oldVal) {
@@ -147,11 +91,7 @@
         let draggertop = parseFloat(newVal / oldVal * oldDraggerTop)
         let draggerheight = parseFloat(newVal / oldVal * oldDraggerHeight)
         let draggerelementTop = draggertop + draggerheight / 2;
-        // this.$store.commit('DRAGGER', {
-        //   top: draggertop,
-        //   height: draggerheight,
-        //   elementTop: draggerelementTop,
-        // })
+
         let dragger = {
           width: this.dragger.width,
           height: draggerheight,
@@ -161,15 +101,7 @@
           elementLeft: draggerelementTop
         }
         this.setDragger(dragger)
-        console.table({
-          'oldTop': oldDraggerTop,
-          'newTop': draggertop,
-          'oldHeight': oldDraggerHeight,
-          'newHeight': draggerheight,
-          'oldParentHeight': oldVal,
-          'newParentHeight': newVal,
-        })
-        // this.refreshInstance()
+
         this.refreshDraggerInstance()
 
       }, 100)
@@ -195,11 +127,6 @@
         console.log("updateDimension -> this.dragger.left ", this.dragger.left)
       },
       handleDrag(x, y) {
-        // this.dragger.top = y;
-        // this.dragger.left = x;
-        // this.dragger.elementTop = y + this.dragger.height / 2;
-        // this.dragger.elementLeft = x + this.dragger.width / 2;
-
         let dragger = {
           width: this.dragger.width,
           height: this.dragger.height,
@@ -211,16 +138,7 @@
         this.setDragger(dragger)
       },
       handleResize(x, y, width, height) {
-        // if (width < height) {
-        //   this.isResizeable = false
-        //   return
-        // }
-        // this.dragger.width = width;
-        // this.dragger.height = height;
-        // this.dragger.top = y;
-        // this.dragger.left = x;
-        // this.dragger.elementTop = y + height / 2;
-        // this.dragger.elementLeft = x + width / 2;
+
         let dragger = {
           width: width,
           height: height,
@@ -232,18 +150,10 @@
         this.setDragger(dragger)
       },
       handleResizeStop() {
-        // this.$emit('onResizeStop', this.dragger)
-        // let parentPadWidth = this.$refs.parentPad.offsetWidth;
-        // this.padWidth = parentPadWidth.toString() + "px";
-        // this.padHeight =
-        //   (parentPadWidth / (this.width / this.height)).toString() + "px";
 
-        // this.showPad = true
       },
     },
-    beforeDestroy() {
-      // window.removeEventListener('resize', this.refreshInstance);
-    },
+    beforeDestroy() {},
 
   }
 </script>

@@ -79,44 +79,19 @@
       }
     },
     created() {
-      EventBus.$on('onResizeStopDragger', data => {
-        // let parentPadWidth = this.$refs.parentPad.offsetWidth;
-        // this.padWidth = parentPadWidth.toString() + "px";
-        // this.padHeight =
-        //   (parentPadWidth / (this.width / this.height)).toString() + "px";
-      })
-      // EventBus.$on('onCancelDownloadClick', data => {
-      //   this.isModalShow = true
-      //   let self = this
-      //   let penColor = this.padOptions.penColor
-      //   setTimeout(() => {
-      //     this.padAdjustment()
-      //     this.padOptions.penColor = penColor
-      //     this.showPad = true
-      //     setTimeout(() => {
-      //       self.$refs.signaturePad.fromData(self.tempDataSignature)
 
-      //     }, 1);
-      //   }, 1);
-      // })
-      // EventBus.$on('onApplyTargetArea', data => {
-      //   this.isModalShow = true
-      //   let penColor = 'black'
-      //   setTimeout(() => {
-
-
-      //     this.padAdjustment()
-      //     this.padOptions.penColor = penColor
-      //     this.showPad = true
-
-      //     console.log("onApplyTargetArea -> this.$refs.signaturePad", this.$refs.signaturePad)
-      //   }, 1);
-      // })
     },
     mounted() {
       this.$nextTick(function() {
         window.addEventListener('resize', this.refreshInstance);
       })
+    },
+    watch: {
+      'isFileSigned': function(newVal, oldVal) {
+        if (newVal) {
+          this.tempDataSignature = null
+        }
+      }
     },
     computed: {
       isShowShowSignatureModal: {
@@ -132,6 +107,7 @@
         fileName: state => state.dataPdf.fileName,
         pageCount: state => state.dataPdf.pageCount,
         currentPage: state => state.dataPdf.currentPage,
+        isFileSigned: state => state.dataPdf.isFileSigned,
       })
     },
     methods: {
@@ -163,16 +139,8 @@
             }, 1);
           }
         }, 1);
-
-
-        //set height and width signature pad relative to dragger
-        // let parentPadWidth = this.$refs.parentPad.offsetWidth;
-        // this.padWidth = parentPadWidth.toString() + "px";
-        // this.padHeight =
-        //   (parentPadWidth / (this.width / this.height)).toString() + "px";
       },
       handleCancelModal() {
-        // EventBus.$emit('onCancelModalSignature')
         let behavior = {
           isResizeable: true,
           isDraggable: true
@@ -181,13 +149,20 @@
         this.tempDataSignature = null
         this.setSignature(null)
       },
-      saveSignature() {
+      saveSignature(e) {
+
         const {
           isEmpty,
           data
         } = this.$refs.signaturePad.saveSignature()
+
+        if (isEmpty) {
+          this.$bvToast.show('empty-signpad-toast')
+          e.preventDefault()
+          return
+        }
+
         this.tempDataSignature = this.$refs.signaturePad.toData()
-        // EventBus.$emit('onSaveSigature', data)
         let behavior = {
           isResizeable: false,
           isDraggable: false
@@ -232,8 +207,6 @@
 
         })
 
-
-        // this.refreshInstanceSignPad()
       },
       padAdjustment() {
         let parentPadWidth = this.$refs.parentPad.offsetWidth;

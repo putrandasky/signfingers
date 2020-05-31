@@ -8,10 +8,22 @@
         Choose File Here
       </b>
     </b-btn>
-    <input class="d-none" type="file" ref="fileInput" name="fileInput" id="fileInput" v-on:change="handleFileUpload()" />
+    <input class="d-none" type="file" ref="fileInput" name="fileInput" id="fileInput" v-on:change="handleFileUpload()" accept="application/pdf" />
     <div>
       Your document will be previewed here
     </div>
+    <!-- <b-alert v-model="showAlert" class="position-fixed fixed-top m-0 rounded-0" style="z-index: 2000" variant="success" dismissible>
+      <div style="display:table">
+
+        <i class="fa fa-2x fa-check-circle-o text-success mr-2"></i>
+        <span style="display:table-cell;vertical-align:middle">
+          <b class="h3">
+            SUCCESS
+          </b>
+        </span>
+      </div>
+    </b-alert> -->
+
   </div>
 </template>
 <script>
@@ -30,7 +42,9 @@
       pdf,
     },
     data: function() {
-      return {}
+      return {
+        showAlert: true
+      }
     },
     created() {
 
@@ -39,11 +53,19 @@
       ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio']),
       handleClick() {
         this.$refs.fileInput.click()
+        // this.$bvToast.show('not-pdf-toast')
+
       },
       handleFileUpload() {
-        // this.$emit('onChange', this.$refs.fileInput.files[0])
-        // EventBus.$emit('FileUploaded', this.$refs.fileInput.files[0])
+        this.setLoading(true)
+        console.log(this.$refs.fileInput.files[0]);
         let file = this.$refs.fileInput.files[0]
+        if (!/\.(pdf)$/i.test(file.name)) {
+          this.$bvToast.show('not-pdf-toast')
+          this.setLoading(false)
+          return
+
+        }
         let objectUrl = URL.createObjectURL(file);
         var loadingTask = pdf.createLoadingTask(objectUrl);
         let dataPdf = {
@@ -64,6 +86,11 @@
       setAfterUpload: debounce(function() {
         this.setFileUploaded(true)
         this.setStep(2)
+        setTimeout(() => {
+
+          this.setLoading(false)
+        }, 500);
+
       }, 100)
     },
   }
