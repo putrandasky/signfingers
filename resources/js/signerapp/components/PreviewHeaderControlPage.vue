@@ -63,19 +63,13 @@
   } from 'vuex'
   export default {
     name: 'PreviewHeaderControlPage',
-    // props: ["data"],
-
     data: function() {
       return {
         oldCurrentPage: 0,
       }
     },
     created() {},
-    mounted() {
-      // EventBus.$on('FileUploaded', data => {
-      //   this.fileName = data.name
-      // })
-    },
+    mounted() {},
     computed: {
       currentPage: {
         get() {
@@ -94,7 +88,6 @@
     methods: {
       ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio']),
       handleSelectClick() {
-        // this.$emit('onSelectClick')
         this.setStep(3)
 
       },
@@ -122,7 +115,6 @@
         this.setPdfCurrentPage(1)
         this.setPdfLoadedRatio(null)
         this.setStep(1)
-        // EventBus.$emit('undoFileLoaded')
       },
     },
   }

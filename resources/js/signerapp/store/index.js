@@ -13,12 +13,13 @@ const PDFLOADEDRATIO = "PDFLOADEDRATIO";
 const DRAGGER = "DRAGGER";
 const PARENTPAGE = "PARENTPAGE";
 const STEP = "STEP";
-const SIGNAUTRE = "SIGNAUTRE";
+const SIGNATURE = "SIGNATURE";
 const ISLOADING = "ISLOADING";
 const ISSHOWDRAGGER = "ISSHOWDRAGGER";
 const DRAGGERBEHAVIOR = "DRAGGERBEHAVIOR";
 const ISSHOWSIGNATUREMODAL = "ISSHOWSIGNATUREMODAL";
-
+const ISSHOWENDMODAL = "ISSHOWENDMODAL";
+const ISFILESIGNED = "ISFILESIGNED"
 
 export const store = new Vuex.Store({
   state: {
@@ -27,6 +28,8 @@ export const store = new Vuex.Store({
     isFileUploaded: false,
     isShowDragger: true,
     isShowShowSignatureModal: false,
+    isShowEndModal: false,
+    isFileSigned: false,
     dataPdf: {
       raw: null,
       fileName: '',
@@ -87,7 +90,7 @@ export const store = new Vuex.Store({
       state.dataPdf.loadedRatio = n.loadedRatio
     },
 
-    [SIGNAUTRE](state, n) {
+    [SIGNATURE](state, n) {
       state.signature.src = n;
     },
     [ISLOADING](state, n) {
@@ -104,6 +107,12 @@ export const store = new Vuex.Store({
     },
     [ISSHOWSIGNATUREMODAL](state, n) {
       state.isShowShowSignatureModal = n;
+    },
+    [ISSHOWENDMODAL](state, n) {
+      state.isShowEndModal = n;
+    },
+    [ISFILESIGNED](state, n) {
+      state.isFileSigned = n;
     },
     [DRAGGERBEHAVIOR](state, n) {
       state.draggerBehavior.isDraggable = n.isDraggable;
@@ -180,7 +189,7 @@ export const store = new Vuex.Store({
       commit
     }, data) {
 
-      commit(SIGNAUTRE, data);
+      commit(SIGNATURE, data);
     },
     setPdfLoadedRatio({
       commit
@@ -204,10 +213,70 @@ export const store = new Vuex.Store({
     }, data) {
       commit(ISSHOWDRAGGER, data);
     },
+    setShowModal({
+      commit
+    }, data) {
+      if (data.name == 'endModal') {
+        commit(ISSHOWENDMODAL, data.value);
+      }
+    },
     setShowSignatureModal({
       commit
     }, data) {
       commit(ISSHOWSIGNATUREMODAL, data);
+    },
+    setFileSigned({
+      commit
+    }, data) {
+      commit(ISFILESIGNED, data);
+    },
+    restart({
+      commit
+    }) {
+      let dragger = {
+        width: 75,
+        height: 45,
+        top: 0,
+        left: 0,
+        elementTop: 0,
+        elementLeft: 0,
+      }
+      let dataPdf = {
+        raw: null,
+        fileName: '',
+        src: null,
+
+      }
+      let behavior = {
+        isResizeable: true,
+        isDraggable: true,
+      }
+      let dataPageCount = {
+        pageCount: null,
+      }
+      let dataCurrentPage = {
+        currentPage: 1,
+      }
+      let parentPage = {
+        height: 0,
+        width: 0
+      }
+      let dataLoadedRatio = {
+        loadedRatio: null
+      }
+      commit(STEP, 1)
+      commit(ISFILEUPLOADED, false)
+      commit(SIGNATURE, null);
+
+      commit(PDFLOADEDRATIO, dataLoadedRatio);
+      commit(PARENTPAGE, parentPage);
+      commit(PDFCURRENTPAGE, dataCurrentPage);
+      commit(PDFTOTALPAGE, dataPageCount);
+      commit(DRAGGERBEHAVIOR, behavior);
+      commit(DRAGGER, dragger);
+
+      commit(DATAPDF, dataPdf);
+      commit(ISFILESIGNED, false);
     },
     refreshDraggerInstance({
       commit

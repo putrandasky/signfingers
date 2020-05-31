@@ -20,11 +20,12 @@ $theme-colors: ("c-dark": $c-dark,
   "c-dark-grey": $c-dark-grey,
   "c-grey": $c-grey,
   "c-white": $c-white,
+  "c-green": #76F5CF,
   "black": #000,
   "blue" :#007bff,
   "green" :#28a745);
 
-.signature-pad-modal .modal-content {
+.modal-content {
   background-color: $c-dark;
 
   .modal-header {
@@ -35,14 +36,17 @@ $theme-colors: ("c-dark": $c-dark,
 
   .modal-body {
     background-color: $c-dark;
-    padding-top: unset;
-    padding-bottom: unset;
   }
 
   .modal-footer {
     background-color: $c-dark;
     border-color: $c-dark;
   }
+}
+
+.signature-pad-modal>.modal-body {
+  padding-top: unset;
+  padding-bottom: unset;
 }
 
 input::-webkit-outer-spin-button,

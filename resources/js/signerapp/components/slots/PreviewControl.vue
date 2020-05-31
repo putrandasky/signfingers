@@ -5,20 +5,27 @@
         {{fileName}}
       </small>
     </div>
-    <div slot="content" class="d-flex justify-content-end align-items-center">
+    <div class="d-flex justify-content-end align-items-center">
+      <slot name="content">
 
+      </slot>
     </div>
 
   </b-card-header>
 </template>
 <script>
+  import {
+    mapState,
+  } from 'vuex'
   export default {
     name: 'PreviewControl',
-    props: ["fileName"],
     data: function() {
       return {}
     },
     created() {},
+    computed: mapState({
+      fileName: state => state.dataPdf.fileName,
+    }),
     methods: {},
   }
 </script>

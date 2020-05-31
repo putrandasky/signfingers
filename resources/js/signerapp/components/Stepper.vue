@@ -1,6 +1,6 @@
 <template>
   <div class="w-100 px-lg-5 px-0">
-    <b-card v-for="(v,i) in data" :key="i" class="font-weight-bold rounded-pill" :class="[step == i+1 ? 'bg-warning':' bg-c-dark-grey text-white d-none d-lg-block',v.class]" no-body>
+    <b-card v-for="(v,i) in data" :key="i" class="font-weight-bold shadow" :class="[step == i+1 ? 'bg-warning':' bg-c-dark-grey text-white d-none d-lg-block',v.class]" no-body>
       <b-card-body class="py-2">
 
         <h5 class="mb-0">

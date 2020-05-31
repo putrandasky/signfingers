@@ -52,22 +52,12 @@ class SignerController extends Controller
     public function generate(Request $request)
     {
         $fpdi = new Tfpdf\Fpdi();
-// return  $_FILES['itemFile'];json_decode($request->input('itemInput'), true);
-// return $request->input('itemSignData');
-// $base64_image = $request->input('itemSignData');
-// $dataImage = str_replace('data:image/png;base64,', '', $base64_image);
-// $dataImage = str_replace(' ', '+', $dataImage);
-// return $dataImage;
+
         $item = json_decode($request->input('itemInput'), true);
-// return $item['elementTop'];
         $openedFile = $request->file('itemFile')->getRealPath();
         $fileName = pathinfo($request->file('itemFile')->getClientOriginalName(), PATHINFO_FILENAME);
         $pagecount = $fpdi->setSourceFile($openedFile);
         $signedPage = $item['page'];
-
-        // $data = explode( ',', $request->input('itemSignData') );
-
-        // $dataImage = utf8_encode( $data[ 1 ] );
 
         for ($i = 0; $i < $pagecount; $i++) {
             if ($i == ($signedPage - 1)) {
@@ -94,19 +84,9 @@ class SignerController extends Controller
 
     }
     public function base64_to_jpeg($base64_string, $output_file) {
-        // open the output file for writing
+
         $ifp = fopen( $output_file, 'wb' );
 
-        // split the string on commas
-        // $data[ 0 ] == "data:image/png;base64"
-        // $data[ 1 ] == <actual base64 string>
-        // $data = explode( ',', $base64_string );
-
-        // we could add validation here with ensuring count( $data ) > 1
-        // fwrite( $ifp, base64_decode( $data[ 1 ] ) );
-
-        // clean up the file resource
-        // fclose( $ifp );
 
         return $output_file;
     }
