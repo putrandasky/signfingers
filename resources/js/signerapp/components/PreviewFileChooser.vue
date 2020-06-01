@@ -73,6 +73,8 @@
           fileName: file.name,
           src: loadingTask
         }
+
+
         this.setDataPdf(dataPdf)
         loadingTask.onProgress = ({
           loaded,

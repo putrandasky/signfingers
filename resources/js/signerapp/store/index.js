@@ -11,6 +11,8 @@ const PDFTOTALPAGE = "PDFTOTALPAGE";
 const PDFCURRENTPAGE = "PDFCURRENTPAGE";
 const PDFLOADEDRATIO = "PDFLOADEDRATIO";
 const DRAGGER = "DRAGGER";
+const DRAGGERV = "DRAGGERV";
+const DRAGGERH = "DRAGGERH";
 const PARENTPAGE = "PARENTPAGE";
 const STEP = "STEP";
 const SIGNATURE = "SIGNATURE";
@@ -67,6 +69,16 @@ export const store = new Vuex.Store({
       state.dragger.left = n.left
       state.dragger.elementTop = n.elementTop
       state.dragger.elementLeft = n.elementLeft
+    },
+    [DRAGGERH](state, n) {
+      state.dragger.width = n.width
+      state.dragger.left = n.left
+      state.dragger.elementLeft = n.elementLeft
+    },
+    [DRAGGERV](state, n) {
+      state.dragger.height = n.height
+      state.dragger.top = n.top
+      state.dragger.elementTop = n.elementTop
     },
     [PARENTPAGE](state, n) {
       state.parentPage.width = n.width
@@ -157,6 +169,26 @@ export const store = new Vuex.Store({
         elementLeft: data.elementLeft
       }
       commit(DRAGGER, dragger);
+    },
+    setDraggerH({
+      commit
+    }, data) {
+      let dragger = {
+        width: data.width,
+        left: data.left,
+        elementLeft: data.elementLeft
+      }
+      commit(DRAGGERH, dragger);
+    },
+    setDraggerV({
+      commit
+    }, data) {
+      let dragger = {
+        height: data.height,
+        top: data.top,
+        elementTop: data.elementTop,
+      }
+      commit(DRAGGERV, dragger);
     },
     setDataPdf({
       commit

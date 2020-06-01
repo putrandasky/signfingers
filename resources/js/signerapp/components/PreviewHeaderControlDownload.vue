@@ -48,6 +48,8 @@
       dragger: state => state.dragger,
       signature: state => state.signature,
       dataPdf: state => state.dataPdf,
+      fileName: state => state.dataPdf.fileName,
+
     }),
     methods: {
       ...mapActions(['setShowSignatureModal', 'setStep', 'setShowModal', 'setFileSigned']),
@@ -76,6 +78,7 @@
         var form = new FormData();
         form.append("itemInput", itemInput);
         form.append("itemSignData", this.signature.src);
+        form.append("timeZone", Intl.DateTimeFormat().resolvedOptions().timeZone);
         form.append("itemFile", this.dataPdf.raw);
         axios
           .post("/generate", form, {
@@ -85,14 +88,24 @@
             }
           })
           .then(response => {
-            let ContentDisposition = response.headers["content-disposition"];
-            let splitedContentDisposition = ContentDisposition.split('"');
-            FileSaver.saveAs(response.data, splitedContentDisposition[1]);
+            console.log({
+              'response-header': response.headers,
+              'response': response,
+
+            });
+
+            // let ContentDisposition = response.headers["content-disposition"];
+            // let splitedContentDisposition = ContentDisposition.split('"');
+            // FileSaver.saveAs(response.data, splitedContentDisposition[1]);
+            // let d = new Date()
+            // let dateTimeFormatted = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()} ${d.getHours()}${d.getMinutes()}`
+            FileSaver.saveAs(response.data, response.headers.filename);
+            // FileSaver.saveAs(response.data, `${this.fileName.substr(0, this.fileName.lastIndexOf("."))} Signed ${dateTimeFormatted}.pdf`);
             this.busy = false
+            this.setFileSigned(true)
+            this.$bvModal.show('endModal')
             // this.$bvToast.show('download-toast')
             // this.isShowEndModal = true
-            this.$bvModal.show('endModal')
-            this.setFileSigned(true)
             // this.setShowModal({
             //   name: 'endModal',
             //   value: true
@@ -101,6 +114,9 @@
           })
           .catch(error => {
             console.log(error);
+            this.$bvToast.show('error-toast')
+            this.busy = false
+
           });
       },
       stringToHTML(str) {

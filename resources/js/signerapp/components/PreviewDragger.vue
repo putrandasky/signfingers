@@ -1,5 +1,5 @@
 <template>
-  <vue-draggable-resizable :class="[signature.src ?'border-0':'']" v-if="isShowDragger" style="z-index:99;text-align:center;display:table" :w="dragger.width" :h="dragger.height" :x="dragger.left" :y="dragger.top" :min-height="bpValue(40,25)" :min-width="bpValue(80,50)" :max-height="bpValue(120,75)" :max-width="bpValue(240,150)" :resizable="draggerBehavior.isResizeable" :draggable="draggerBehavior.isDraggable" @dragging="handleDrag" @resizing="handleResize" :active="true" :prevent-deactivation="true" :parent="true" v-on:resizestop="handleResizeStop" v-on:dragstop="handleResizeStop">
+  <vue-draggable-resizable :class="[signature.src ?'border-0':'']" v-if="isShowDragger" style="z-index:99;text-align:center;display:table" :w="dragger.width" :h="dragger.height" :x="dragger.left" :y="dragger.top" :min-height="minHeight" :min-width="minWidth" :max-height="maxHeight" :max-width="maxWidth" :resizable="draggerBehavior.isResizeable" :draggable="draggerBehavior.isDraggable" @dragging="handleDrag" @resizing="handleResize" :active="true" :prevent-deactivation="true" :parent="true" v-on:resizestop="handleResizeStop" v-on:dragstop="handleResizeStop">
     <div v-if="!signature.src" class="inner-box" :style="{width:dragger.width+'px',height:dragger.height+'px','font-size':bpValue('16px','10px')}">
       SIGN HERE
       <!-- <p>{{dragger.width}} x {{dragger.height}}</p>
@@ -43,13 +43,27 @@
       })
 
     },
-    computed: mapState({
-      parentPage: state => state.parentPage,
-      dragger: state => state.dragger,
-      signature: state => state.signature,
-      isShowDragger: state => state.isShowDragger,
-      draggerBehavior: state => state.draggerBehavior,
-    }),
+    computed: {
+      minWidth() {
+        return this.parentPage.width * 0.1
+      },
+      minHeight() {
+        return this.parentPage.width * 0.1 * 0.5
+      },
+      maxWidth() {
+        return this.parentPage.width * 0.2
+      },
+      maxHeight() {
+        return this.parentPage.width * 0.2 * 0.5
+      },
+      ...mapState({
+        parentPage: state => state.parentPage,
+        dragger: state => state.dragger,
+        signature: state => state.signature,
+        isShowDragger: state => state.isShowDragger,
+        draggerBehavior: state => state.draggerBehavior,
+      })
+    },
     watch: {
 
 
@@ -69,13 +83,10 @@
 
         let dragger = {
           width: draggerwidth,
-          height: this.dragger.height,
-          top: this.dragger.top,
           left: draggerleft,
-          elementTop: this.dragger.elementTop,
           elementLeft: draggerelementLeft,
         }
-        this.setDragger(dragger)
+        this.setDraggerH(dragger)
 
         this.refreshDraggerInstance()
 
@@ -93,24 +104,22 @@
         let draggerelementTop = draggertop + draggerheight / 2;
 
         let dragger = {
-          width: this.dragger.width,
           height: draggerheight,
           top: draggertop,
-          left: this.dragger.left,
-          elementTop: this.dragger.elementLeft,
-          elementLeft: draggerelementTop
+          elementTop: draggerelementTop
         }
-        this.setDragger(dragger)
+        this.setDraggerV(dragger)
 
         this.refreshDraggerInstance()
 
       }, 100)
     },
     methods: {
-      ...mapActions(['setDragger', 'refreshDraggerInstance', 'setStep']),
+      ...mapActions(['setDragger', 'setDraggerV', 'setDraggerH', 'refreshDraggerInstance', 'setStep']),
       bpValue(lgUpValue, lgDownValue) {
         return ['lg', 'xl'].includes(this.$mq) ? lgUpValue : lgDownValue
       },
+
       refreshInstance() {
         this.isShown = false
         setTimeout(() => {
