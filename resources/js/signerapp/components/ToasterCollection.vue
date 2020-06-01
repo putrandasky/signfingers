@@ -39,6 +39,19 @@
       </template>
       You are not drawing any signature
     </b-toast>
+    <b-toast id="error-toast" variant="danger" solid>
+      <template v-slot:toast-title>
+        <div class="d-table">
+          <i class="fa fa-2x fa-times-circle-o text-danger mr-2"></i>
+          <span class="d-table-cell align-middle">
+            <b class="h4">
+              ERROR
+            </b>
+          </span>
+        </div>
+      </template>
+      Something error, try again later.
+    </b-toast>
   </div>
 </template>
 <script>

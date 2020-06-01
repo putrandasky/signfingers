@@ -1,3 +1,15 @@
+# 2 Jun 2020
+## 0.4
+### ADDED
+  1. Toaster Error for failed signing
+  2. Date time on file name after signed
+  3. Timezone on client and server for naming file
+
+### FIXED
+  1. PDF file cannot open after signing on several PDF viewer apps
+  2. Not updating parent page width and height of file while rotating page view
+  3. Error on Landscape page
+  
 # 31 May 2020
 ## 0.3
 ### ADDED
