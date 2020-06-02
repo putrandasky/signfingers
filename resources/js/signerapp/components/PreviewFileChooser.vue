@@ -23,7 +23,6 @@
         </span>
       </div>
     </b-alert> -->
-
   </div>
 </template>
 <script>
@@ -46,15 +45,12 @@
         showAlert: true
       }
     },
-    created() {
-
-    },
+    created() {},
     methods: {
       ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio']),
       handleClick() {
         this.$refs.fileInput.click()
         // this.$bvToast.show('not-pdf-toast')
-
       },
       handleFileUpload() {
         this.setLoading(true)
@@ -64,7 +60,6 @@
           this.$bvToast.show('not-pdf-toast')
           this.setLoading(false)
           return
-
         }
         let objectUrl = URL.createObjectURL(file);
         var loadingTask = pdf.createLoadingTask(objectUrl);
@@ -73,8 +68,6 @@
           fileName: file.name,
           src: loadingTask
         }
-
-
         this.setDataPdf(dataPdf)
         loadingTask.onProgress = ({
           loaded,
@@ -88,11 +81,13 @@
       setAfterUpload: debounce(function() {
         this.setFileUploaded(true)
         this.setStep(2)
+        this.setPdfCurrentPage(1)
         setTimeout(() => {
+          //to prevent miss rotation of pdf after loading (pdf.js bug)
 
           this.setLoading(false)
-        }, 500);
 
+        }, 500);
       }, 100)
     },
   }

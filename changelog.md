@@ -1,4 +1,10 @@
 # 2 Jun 2020
+## 0.5
+### CHANGED
+  1. Min Max for Width and Height of dragger
+  2. Width and Height of dragger after reset
+
+
 ## 0.4
 ### ADDED
   1. Toaster Error for failed signing

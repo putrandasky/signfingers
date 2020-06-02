@@ -1,9 +1,9 @@
 <template>
-  <vue-draggable-resizable :class="[signature.src ?'border-0':'']" v-if="isShowDragger" style="z-index:99;text-align:center;display:table" :w="dragger.width" :h="dragger.height" :x="dragger.left" :y="dragger.top" :min-height="minHeight" :min-width="minWidth" :max-height="maxHeight" :max-width="maxWidth" :resizable="draggerBehavior.isResizeable" :draggable="draggerBehavior.isDraggable" @dragging="handleDrag" @resizing="handleResize" :active="true" :prevent-deactivation="true" :parent="true" v-on:resizestop="handleResizeStop" v-on:dragstop="handleResizeStop">
-    <div v-if="!signature.src" class="inner-box" :style="{width:dragger.width+'px',height:dragger.height+'px','font-size':bpValue('16px','10px')}">
-      SIGN HERE
+  <vue-draggable-resizable :class="[signature.src ?'border-0':'']" v-if="isShowDragger" style="z-index:99;text-align:center;display:table" drag-handle=".inner-box" :w="dragger.width" :h="dragger.height" :x="dragger.left" :y="dragger.top" :min-height="minHeight" :min-width="minWidth" :max-height="maxHeight" :max-width="maxWidth" :resizable="draggerBehavior.isResizeable" :draggable="draggerBehavior.isDraggable" @dragging="handleDrag" @resizing="handleResize" :active="true" :prevent-deactivation="true" :parent="true" v-on:resizestop="handleResizeStop" v-on:dragstop="handleResizeStop">
+    <div v-if="!signature.src" class="inner-box" :style="{width:dragger.width+'px',height:dragger.height+'px','font-size':bpValue('16px','12px')}">
+      Sign Here
       <!-- <p>{{dragger.width}} x {{dragger.height}}</p>
-      <p>{{targetProperties.parentWidth}} x {{targetProperties.parentHeight}}</p>
+      <p>{{dragger.elementLeft}} x {{dragger.elementTop}}</p>
       <p>{{dragger.left}} x {{dragger.top}}</p> -->
     </div>
     <img v-if="signature.src" :src="signature.src" :style="{width:dragger.width+'px',height:dragger.height+'px'}">
@@ -28,18 +28,33 @@
     },
     data: function() {
       return {
-
+        show: true
       }
     },
     created() {
+
 
       this.handleResizeStop()
 
     },
     mounted() {
+
+
       this.$nextTick(function() {
+        if (!this.signature.src) {
+          let dragger = {
+            width: this.parentPage.width * 0.2,
+            height: this.parentPage.width * 0.2 * 0.5,
+            top: 0,
+            left: 0,
+            elementTop: 0 + this.parentPage.width * 0.2 * 0.5 / 2,
+            elementLeft: 0 + this.parentPage.width * 0.2 / 2,
+          }
+          this.setDragger(dragger)
+          console.log('nextic sign src');
 
-
+          // this.refreshDraggerInstance()
+        }
       })
 
     },

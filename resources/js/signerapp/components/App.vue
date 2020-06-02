@@ -16,7 +16,7 @@
 
             <b-overlay :show="isLoading" opacity="0.6" no-wrap>
             </b-overlay>
-            <div v-if="isFileUploaded" class="position-relative w-100" ref="parent">
+            <div id="parent" v-if="isFileUploaded" class="position-relative w-100" ref="parent">
               <dragger style="z-index:900" v-if="isFileUploaded && [3,4].includes(step)" />
               <pdf style="border: 1px solid black;height:100%;width:100%;overflow:hidden" :src="dataPdf.src" :page="dataPdf.currentPage" @num-pages="setPdfTotalPage" @page-loaded="setPdfCurrentPage" @progress="setPdfLoadedRatio"></pdf>
 
@@ -109,10 +109,13 @@
         if (this.isFileUploaded) {
           // this.parentPage.width = this.$refs.parent.offsetWidth;
           // this.parentPage.height = this.$refs.parent.offsetHeight;
+          console.log({
+            'parentWidth': document.getElementById('parent').offsetWidth
+          });
 
           let parentPage = {
-            width: this.$refs.parent.offsetWidth,
-            height: this.$refs.parent.offsetHeight
+            width: document.getElementById('parent').offsetWidth,
+            height: document.getElementById('parent').offsetHeight
           }
           this.setParentPage(parentPage)
           console.log('from app debounce');

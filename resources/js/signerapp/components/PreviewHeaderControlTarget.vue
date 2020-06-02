@@ -41,6 +41,9 @@
       return {}
     },
     created() {},
+    computed: mapState({
+      parentPage: state => state.parentPage,
+    }),
     methods: {
       ...mapActions(['setDataPdf', 'setParentPage', 'setStep', 'setFileUploaded', 'setLoading', 'setPdfTotalPage', 'setPdfCurrentPage', 'setPdfLoadedRatio', 'setDragger', 'refreshDraggerInstance', 'setShowSignatureModal']),
       bpValue(lgUpValue, lgDownValue) {
@@ -50,13 +53,15 @@
         this.setStep(2)
       },
       handleResetClick() {
+        let minWidth = this.parentPage.width * 0.2
+        let minHeight = this.parentPage.width * 0.2 * 0.5
         let dragger = {
-          width: this.bpValue(80, 50),
-          height: this.bpValue(40, 25),
+          width: minWidth,
+          height: minHeight,
           top: 0,
           left: 0,
-          elementTop: this.bpValue(40, 25) / 2,
-          elementLeft: this.bpValue(80, 50) / 2
+          elementTop: minHeight / 2,
+          elementLeft: minWidth / 2
         }
         this.setDragger(dragger)
         this.refreshDraggerInstance()
