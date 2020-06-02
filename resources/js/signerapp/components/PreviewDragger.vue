@@ -43,12 +43,12 @@
       this.$nextTick(function() {
         if (!this.signature.src) {
           let dragger = {
-            width: this.parentPage.width * 0.2,
-            height: this.parentPage.width * 0.2 * 0.5,
+            width: this.parentPage.width * 0.3,
+            height: this.parentPage.width * 0.3 * 0.5,
             top: 0,
             left: 0,
-            elementTop: 0 + this.parentPage.width * 0.2 * 0.5 / 2,
-            elementLeft: 0 + this.parentPage.width * 0.2 / 2,
+            elementTop: 0 + this.parentPage.width * 0.3 * 0.5 / 2,
+            elementLeft: 0 + this.parentPage.width * 0.3 / 2,
           }
           this.setDragger(dragger)
           console.log('nextic sign src');
@@ -66,10 +66,10 @@
         return this.parentPage.width * 0.1 * 0.5
       },
       maxWidth() {
-        return this.parentPage.width * 0.2
+        return this.parentPage.width * 0.3
       },
       maxHeight() {
-        return this.parentPage.width * 0.2 * 0.5
+        return this.parentPage.width * 0.3 * 0.5
       },
       ...mapState({
         parentPage: state => state.parentPage,

@@ -53,8 +53,8 @@
         this.setStep(2)
       },
       handleResetClick() {
-        let minWidth = this.parentPage.width * 0.2
-        let minHeight = this.parentPage.width * 0.2 * 0.5
+        let minWidth = this.parentPage.width * 0.3
+        let minHeight = this.parentPage.width * 0.3 * 0.5
         let dragger = {
           width: minWidth,
           height: minHeight,
