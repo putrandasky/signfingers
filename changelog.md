@@ -1,3 +1,13 @@
+# 5 Jun 2020
+## 0.6
+### ADDED
+  1. Landing Page
+  2. image asset for hero, tagline, signing mockup
+
+### CHANGED
+  1. New route for signing app
+
+
 # 2 Jun 2020
 ## 0.5
 ### CHANGED

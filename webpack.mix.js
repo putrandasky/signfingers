@@ -15,34 +15,34 @@ const mix = require('laravel-mix');
 //    .sass('resources/sass/app.scss', 'public/css');
 
 
-   mix.webpackConfig({
-    devServer: {
-      proxy: {
-          '*': 'http://localhost:8000'
-      }
+mix.webpackConfig({
+  devServer: {
+    proxy: {
+      '*': 'http://localhost:8000'
+    }
   },
-    resolve: {
-      extensions: ['.js', '.vue', '.json'],
-      alias: {
-        '@': path.resolve(__dirname, 'resources/js/')
-      },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'resources/js/')
     },
-  });
-  mix
+  },
+});
+mix
   .js('resources/js/signerapp/app.js', 'public/js/signerapp.js')
+  .sass('resources/js/signerapp/custom.scss', 'public/css/style.css');
 
 
 
-
-  if (mix.inProduction()) {
-mix.version();
-    mix.options({
-      terser: {
-        terserOptions: {
-          compress: {
-            drop_console: true
-          }
+if (mix.inProduction()) {
+  mix.version();
+  mix.options({
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true
         }
       }
-    });
-  }
+    }
+  });
+}
