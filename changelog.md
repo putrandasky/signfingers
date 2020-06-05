@@ -1,4 +1,8 @@
 # 5 Jun 2020
+## 0.7.1
+### FIXED
+  1. Meta data
+  2. picture while share whatsapp
 ## 0.7
 ### ADDED
   1. Navbar
