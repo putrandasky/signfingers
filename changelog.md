@@ -1,5 +1,8 @@
 # 5 Jun 2020
-## 0.6
+## 0.6.1
+### ADDED
+  1. Google Analytics
+
 ### ADDED
   1. Landing Page
   2. image asset for hero, tagline, signing mockup

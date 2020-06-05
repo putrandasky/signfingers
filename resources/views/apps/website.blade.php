@@ -18,7 +18,7 @@
     <div class="cols-12 w-100 text-warning text-center">
       <h3>
         <b>
-          Why using SignFingers?
+          Why using SignFinger?
         </b>
       </h3>
     </div>
@@ -57,7 +57,7 @@
           No Hazzle
         </x-slot>
         Digitizing your signature as easy as counting until three
-        To the point and shortest workflow for the get signing job done
+        To the point and shortest workflow for get the signing job done
         Forget the way to digitizing a signature in a document with a crop, copy, paste from scanned signature
       </x-why-item>
     </div>
