@@ -175,5 +175,5 @@
 @endsection
 
 @section('script')
-{{-- @include('scripts.website') --}}
+@include('scripts.website')
 @endsection
