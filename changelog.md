@@ -1,4 +1,8 @@
 # 5 Jun 2020
+## 0.7
+### ADDED
+  1. Navbar
+  2. Logo
 ## 0.6.1
 ### ADDED
   1. Google Analytics
