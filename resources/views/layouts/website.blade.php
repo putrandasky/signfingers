@@ -16,15 +16,17 @@
     gtag('config', 'G-145249635');
   </script>
 
-  <title>SignFinger - Simple Yet Digital Signaturing</title>
+  <title>SignFinger - Simple Yet Platform Digital Signing</title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta charset="utf-8">
   <meta name="author" content="Radityo Putra Paripurna | alterfingers.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="description" content="The simple yet platform for replacing conventional signing activities with digital signing activities free and secure">
+  <meta name="keywords" content="digital signing, esign, digital signature, sign digital">
   <meta property="og:image" content="{{ asset('img/favicon.png') }}">
   <meta property="og:title" content="SignFinger" />
   <meta property="og:url" content="https://signfinger.com" />
-  <meta property="og:description" content="Simple Yet Digital Signaturing">
+  <meta property="og:description" content="Simple Yet Platform Digital Signing">
   <link type="image/png" href="{{ asset('img/favicon.png') }}" rel="icon">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">

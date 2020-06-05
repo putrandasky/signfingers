@@ -58,7 +58,7 @@
         </x-slot>
         Digitizing your signature as easy as counting until three
         To the point and shortest workflow for get the signing job done
-        Forget the way to digitizing a signature in a document with a crop, copy, paste from scanned signature
+        forget the way to digitizing a signature in a document with a crop, copy, paste from scanned signature
       </x-why-item>
     </div>
     <div class="col-lg-6 mb-5">
