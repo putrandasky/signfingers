@@ -1,3 +1,11 @@
+
+
+# 6 Jun 2020
+## 0.6
+### ADDED
+  1. Localisation
+  2. Button for change lang in navbar website
+
 # 5 Jun 2020
 ## 0.7.1
 ### FIXED

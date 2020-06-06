@@ -22,3 +22,12 @@ function navbarShadow() {
 document.addEventListener('scroll', function(t) {
   navbarShadow();
 });
+
+OpenSidebarButton.addEventListener('click', function(t) {
+  sidebar.classList.add('mobile--active');
+  overLay.classList.add('mobile--active');
+});
+CloseSidebarButton.addEventListener('click', function(t) {
+  sidebar.classList.remove('mobile--active');
+  overLay.classList.remove('mobile--active');
+});

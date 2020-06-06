@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('/', function () {
+
+Route::get('', function () {
+    // App::setLocale($locale);
+    return view('apps.website');
+});
+Route::get('/id', function () {
+    App::setLocale('id');
     return view('apps.website');
 });
 Route::get('/sign-file', function () {

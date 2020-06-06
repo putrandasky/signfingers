@@ -1,5 +1,5 @@
       <div class="media">
-        <span class="fa-stack fa-3x">
+        <span class="fa-stack fa-3x fa-sm-2x">
           {{$icon}}
           <i class="fa fa-ban fa-stack-2x " style="color:Tomato">
           </i>
