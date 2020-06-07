@@ -1,7 +1,15 @@
-
+# 6 Jun 2020
+## 1.0 Beta
+### ADDED
+  1. Logo signfinger on app signer
+### CHANGED
+  1. "how work" on landing page with carousel
+  2. localization on how work in vue component
+  3. css website to sass
+  4. image for og:image with hero snapshot
 
 # 6 Jun 2020
-## 0.6
+## 0.8
 ### ADDED
   1. Localisation
   2. Button for change lang in navbar website

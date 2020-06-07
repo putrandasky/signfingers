@@ -82,6 +82,7 @@
         this.setFileUploaded(true)
         this.setStep(2)
         this.setPdfCurrentPage(1)
+
         setTimeout(() => {
           //to prevent miss rotation of pdf after loading (pdf.js bug)
 

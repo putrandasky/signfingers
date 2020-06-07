@@ -37,7 +37,7 @@ export const store = new Vuex.Store({
       fileName: '',
       src: null,
       pageCount: null,
-      currentPage: 2,
+      currentPage: 0,
       loadedRatio: null
     },
     dragger: {

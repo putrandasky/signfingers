@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Signer;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use setasign\Fpdi\Tfpdf;
-use Carbon\Carbon;
 
 class SignerController extends Controller
 {
@@ -62,36 +62,36 @@ class SignerController extends Controller
 
         for ($i = 0; $i < $pagecount; $i++) {
             if ($i == ($signedPage - 1)) {
-              $tppl = $fpdi->importPage($i + 1);
-              $sizeTemplate = $fpdi->getTemplatesize($tppl);
-              $fpdi->AddPage($sizeTemplate['orientation'],[$sizeTemplate['width'],$sizeTemplate['height']]);
-              $fpdi->useTemplate($tppl);
+                $tppl = $fpdi->importPage($i + 1);
+                $sizeTemplate = $fpdi->getTemplatesize($tppl);
+                $fpdi->AddPage($sizeTemplate['orientation'], [$sizeTemplate['width'], $sizeTemplate['height']]);
+                $fpdi->useTemplate($tppl);
                 $targetY = $item['elementTop'] / $item['parentHeight'] * $sizeTemplate['height'];
                 $targetX = $item['elementLeft'] / $item['parentWidth'] * $sizeTemplate['width'];
                 $targetHeight = $item['height'] / $item['parentHeight'] * $sizeTemplate['height'];
                 $targetWidth = $item['width'] / $item['parentWidth'] * $sizeTemplate['width'];
-                $fpdi->Image($request->input('itemSignData'), $targetX - ($targetWidth / 2), $targetY - ($targetHeight / 2), $targetWidth, $targetHeight,'PNG');
+                $fpdi->Image($request->input('itemSignData'), $targetX - ($targetWidth / 2), $targetY - ($targetHeight / 2), $targetWidth, $targetHeight, 'PNG');
             }
             if ($i != ($signedPage - 1)) {
-              $tppl = $fpdi->importPage($i + 1);
-              $sizeTemplate = $fpdi->getTemplatesize($tppl);
-              $fpdi->AddPage($sizeTemplate['orientation'],[$sizeTemplate['width'],$sizeTemplate['height']]);
-              $fpdi->useTemplate($tppl);
+                $tppl = $fpdi->importPage($i + 1);
+                $sizeTemplate = $fpdi->getTemplatesize($tppl);
+                $fpdi->AddPage($sizeTemplate['orientation'], [$sizeTemplate['width'], $sizeTemplate['height']]);
+                $fpdi->useTemplate($tppl);
             }
 
         }
         // $fpdi->Output("D","{$fileName}-SIGN.pdf",true);
-      // setlocale(LC_TIME, 'id');
-      $tz = $request->input('timeZone') ?? null;
-      $dateTime = Carbon::now($tz)->format('d-M-y His');
-        return response($fpdi->Output('S',"{$fileName}-SIGN.pdf",true), 200, array(
-        'Content-Type' => 'application/pdf','Filename' => "{$fileName} SIGNED {$dateTime}.pdf"));
- return new Response();
+        // setlocale(LC_TIME, 'id');
+        $tz = $request->input('timeZone') ?? null;
+        $dateTime = Carbon::now($tz)->format('d-M-y His');
+        return response($fpdi->Output('S', "{$fileName}-SIGN.pdf", true), 200, array(
+            'Content-Type' => 'application/pdf', 'Filename' => "{$fileName} SIGNED {$dateTime}.pdf"));
+        // return new Response();
     }
-    public function base64_to_jpeg($base64_string, $output_file) {
+    public function base64_to_jpeg($base64_string, $output_file)
+    {
 
-        $ifp = fopen( $output_file, 'wb' );
-
+        $ifp = fopen($output_file, 'wb');
 
         return $output_file;
     }

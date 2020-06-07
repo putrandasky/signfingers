@@ -12,12 +12,14 @@
 <x-hero>
   <x-slot name="title">
     @lang('website.hero.title')
+
   </x-slot>
   @lang('website.hero.subtitle')
   <x-slot name="button">
- @lang('website.hero.button')
+    @lang('website.hero.button')
   </x-slot>
 </x-hero>
+
 
 
 
@@ -110,47 +112,13 @@
 </div>
 <div id="how-work" class="bg-c-dark-grey py-5">
   <div class=" container ">
-    <div class="row">
-      <div class="col-lg-6 mb-3">
-        <div class="w-100 text-warning text-center mb-5">
-          <h3>
-            <strong>
+    {{-- <div class="row">
+      <div class="col-12">
 
-              @lang('website.how-work.title')
-            </strong>
-          </h3>
-        </div>
-        <div>
-          <h5 class="text-warning">
-           @lang('website.how-work.1.title')
-          </h5>
-          <p class="text-white">
-            @lang('website.how-work.1.subtitle')
-          </p>
-        </div>
-        <div>
-            <h5 class="text-warning">
-              @lang('website.how-work.2.title')
-            </h5>
-            <p class="text-white">
-              @lang('website.how-work.2.subtitle')
-            </p>
-        </div>
-        <div>
-            <h5 class="text-warning">
-              @lang('website.how-work.3.title')
-            </h5>
-            <p class="text-white">
-              @lang('website.how-work.3.subtitle')
-            </p>
-        </div>
       </div>
-      <div class="col-lg-6">
-        <div class="position-relative px-5">
-          <img class="img-center img-fluid shadow-lg" src="{{ asset('images/sign_mock.png') }}" alt="">
-        </div>
-      </div>
-    </div>
+    </div> --}}
+    <carrousel-how-works locale="{{ (request()->is("id")) ? 'id' : 'en' }}"></carrousel-how-works>
+
   </div>
 </div>
 <div id="cta" class="py-5">
@@ -175,7 +143,6 @@
     </strong>
   </div>
 </div>
-
 @endsection
 
 @section('script')

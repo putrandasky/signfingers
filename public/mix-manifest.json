@@ -1,5 +1,7 @@
 {
-    "/js/signerapp.js": "/js/signerapp.js?id=fb13db60e83eea2289a6",
-    "/css/style.css": "/css/style.css?id=9a37b8408bd3b53c2395",
-    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js?id=f76a7fb138e3f60e6cc9"
+    "/js/signerapp.js": "/js/signerapp.js?id=7bd822a667f9b6ccbf08",
+    "/css/style.css": "/css/style.css?id=6d9209a41c9688b0bc42",
+    "/css/website/style.css": "/css/website/style.css?id=c39bfe082b6aa41ece47",
+    "/js/website.js": "/js/website.js?id=01beac1e9005c9c2bd80",
+    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js?id=ec6cc9b617d24afde0f1"
 }

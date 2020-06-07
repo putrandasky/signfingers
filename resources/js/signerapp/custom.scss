@@ -76,47 +76,6 @@ h6 {
 }
 
 
-.intro-homepage {
-  height: 100%;
-
-
-}
-
-.intro-homepage .jumbotron {
-  /* Full height */
-  height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.intro-blog .jumbotron {
-  /* Full height */
-  /* height: 100%; */
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#intro .jumbotron {
-  border-radius: unset;
-
-}
-
-
-.parallax {
-  /* background-image:linear-gradient(rgba(255, 255, 255, 255.7), rgba(255, 255, 255, 0.7)),url('/image/website/about-bg.jpg'); */
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* padding: 60px 0 40px 0; */
-  background-attachment: fixed;
-
-
-}
-
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
