@@ -1,4 +1,7 @@
-# 6 Jun 2020
+# 8 Jun 2020
+## 1.0.1 Beta 
+### CHANGED
+  1. "File must be uncompressed PDF Format!"  in filechooser
 ## 1.0 Beta
 ### ADDED
   1. Logo signfinger on app signer
