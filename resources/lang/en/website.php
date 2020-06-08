@@ -3,8 +3,8 @@
 return [
     'meta' => [
         'title' => 'SignFinger - Digital Signing Platform',
-        'description' => 'The platform for replacing conventional signing activities with digital signing activities free and secure',
-        'keywords' => 'digital signing, esign, digital signature, sign digital',
+        'description' => 'The platform for replacing conventional signing activities with digital signing for free and secure',
+        'keywords' => 'digital signing, esign, electronic signature, e signature ,digital signature, sign digital,digital sign,finger sign, sign finger',
         'og_description' => 'Digital Signing Platform',
     ],
     'hero' => [

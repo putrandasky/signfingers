@@ -4,7 +4,7 @@ return [
     'meta' => [
         'title' => 'SignFinger - Platform Tanda Tangan Digital',
         'description' => 'Platform untuk menggantikan aktifitas bertanda tangan secara konvensional dengan bertanda tangan secara digital yang gratis dan aman',
-        'keywords' => 'tanda tangan digital, e tanda tangan, penanda-tanganan digital, bertanda tangan digital',
+        'keywords' => 'tanda tangan digital, e tanda tangan, tanda tangan elektronik, penanda-tanganan digital, bertanda tangan digital, tanda tangan jari',
         'og_description' => 'Platform Tanda Tangan Digital',
     ],
     'hero' => [

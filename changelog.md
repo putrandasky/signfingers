@@ -1,4 +1,10 @@
 # 8 Jun 2020
+## 1.0.2 Beta 
+### CHANGED
+  1. text in meta description and keywords
+  2. optimizing pic for og:image
+
+# 8 Jun 2020
 ## 1.0.1 Beta 
 ### CHANGED
   1. "File must be uncompressed PDF Format!"  in filechooser
