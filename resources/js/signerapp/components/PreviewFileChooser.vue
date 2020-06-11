@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <div>
-      File must be uncompressed PDF Format!
+      File must be in PDF Format
     </div>
     <b-btn variant="warning shadow my-3" class="" @click="handleClick()">
       <b>

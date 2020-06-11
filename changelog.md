@@ -1,4 +1,14 @@
 # 8 Jun 2020
+## 1.1 
+### CHANGED
+  1. better description in meta
+
+### FIXED
+  1. Able to handle PDF with 1.5 and above
+  2. Able to handle PDF with Compression
+  3. og:image on sign-file url
+
+# 8 Jun 2020
 ## 1.0.2 Beta 
 ### CHANGED
   1. text in meta description and keywords
