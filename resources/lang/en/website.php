@@ -2,14 +2,18 @@
 
 return [
     'meta' => [
-        'title' => 'SignFinger - Digital Signing Platform',
-        'description' => 'Digital Signature for replacing conventional signing activities with digital. Signfinger provide digital signature platform for free and secure',
-        'keywords' => 'digital signing, esign, electronic signature, e signature ,digital signature, sign digital,digital sign,finger sign, sign finger',
-        'og_description' => 'Digital Signing Platform',
+        'title' => 'Digital Signature | Signfinger',
+        'description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
+        'keywords' => 'digital signature, digital signing, esign, electronic signature, e signature , sign digital, digital sign,finger sign, sign finger',
+        'og_title' => 'Digital Signature | Signfinger',
+        'og_site_name' => 'Signfinger',
+        'og_description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
+        'twitter_title' => 'Digital Signature | Signfinger',
+        'twitter_description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
     ],
     'hero' => [
-        'title' => 'Digitizing Your Signing Activities',
-        'subtitle' => '  Providing a free and secure platform in order to support new normal for your work and business',
+        'title' => 'Digital Singature For Digitizing Signing Activities',
+        'subtitle' => 'Providing a free and secure digital signature platform in order to support new normal for your work and business. No registration, no download, and no fee or cost required',
         'button' => 'Start Signing',
     ],
     'why' => [

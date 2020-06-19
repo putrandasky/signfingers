@@ -2,14 +2,18 @@
 
 return [
     'meta' => [
-        'title' => 'SignFinger - Platform Tanda Tangan Digital',
-        'description' => 'Tanda tangan digital untuk menggantikan aktifitas bertanda tangan secara konvensional dengan digital. Signfinger menyediakan platform untuk tanda tangan digital yang gratis dan aman',
-        'keywords' => 'tanda tangan digital, e tanda tangan, tanda tangan elektronik, penanda-tanganan digital, bertanda tangan digital, tanda tangan jari',
-        'og_description' => 'Platform Tanda Tangan Digital',
+        'title' => 'Tanda Tangan Digital | Signfinger',
+        'description' => 'Signfinger menyediakan platform tanda tangan digital tanpa pendaftaran yang gratis dan aman. Tanda tangan digital untuk menggantikan aktifitas bertanda tangan secara konvensional dengan digital. ',
+        'keywords' => 'tanda tangan digital, elektronik tanda tangan, tanda tangan elektronik, penanda-tanganan digital, bertanda tangan digital, tanda tangan jari',
+        'og_title' => 'Tanda Tangan Digital | Signfinger',
+        'og_site_name' => 'Signfinger',
+        'og_description' => 'Signfinger menyediakan platform tanda tangan digital tanpa pendaftaran yang gratis dan aman. Tanda tangan digital untuk menggantikan aktifitas bertanda tangan secara konvensional dengan digital',
+        'twitter_title' => 'Tanda Tangan Digital | Signfinger',
+        'twitter_description' => 'Signfinger menyediakan platform tanda tangan digital tanpa pendaftaran yang gratis dan aman. Tanda tangan digital untuk menggantikan aktifitas bertanda tangan secara konvensional dengan digital',
     ],
     'hero' => [
-        'title' => 'Digitalkan Aktifitas Bertanda Tangan Anda',
-        'subtitle' => 'Menyediakan platform gratis dan aman dalam hal mendukung new normal untuk segala pekerjaan dan bisnis anda.',
+        'title' => 'Tanda Tangan Digital Untuk Digitalisasi Aktifitas Bertanda Tangan',
+        'subtitle' => 'Menyediakan platform tanda tangan digital gratis dan aman dalam hal mendukung new normal untuk segala pekerjaan dan bisnis anda.  tidak perlu mendaftar, tidak perlu mengunduh, dan tidak perlu biaya.',
         'button' => 'Mulai Tanda Tangan',
     ],
     'why' => [

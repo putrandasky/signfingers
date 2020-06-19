@@ -109,6 +109,7 @@ class SignerController extends Controller
         // $fpdi->Output("D","{$fileName}-SIGN.pdf",true);
         // setlocale(LC_TIME, 'id');
         $tz = $request->input('timeZone') ?? null;
+        $tz = $tz != 'undefined' ? $tz : null;
         $dateTime = Carbon::now($tz)->format('d-M-y His');
         return response($fpdi->Output('S', "{$fileName}-SIGN.pdf", true), 200, array(
             'Content-Type' => 'application/pdf', 'Filename' => "{$fileName} SIGNED {$dateTime}.pdf"));

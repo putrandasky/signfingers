@@ -15,17 +15,8 @@
     gtag('config', 'UA-145249635-2');
     gtag('config', 'G-145249635');
   </script>
-
-
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta charset="utf-8">
-  <meta name="author" content="Radityo Putra Paripurna | alterfingers.com">
   @yield('meta')
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  <meta property="og:image" content="{{asset('images/landingpage_hero.png')}}">
-  <meta property="og:title" content="SignFinger" />
-  <meta property="og:url" content="https://signfinger.com" />
-
+  <link rel="canonical" href="https://signfinger.com/">
   <link type="image/png" href="{{ asset('images/icon.png') }}" rel="icon">
   <!-- Main Stylesheet File -->
   <link href="{{ mix('css/style.css') }}" rel="stylesheet">

@@ -1,3 +1,10 @@
+# 19 Jun 2020
+## 1.1.1
+### FIXED
+  1. Copywriter improvement on landing page
+  2. Meta improvement
+  3. Error on backend when request input timeZone from client is 'undefined'
+
 # 8 Jun 2020
 ## 1.1 
 ### CHANGED
