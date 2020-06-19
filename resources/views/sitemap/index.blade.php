@@ -5,6 +5,10 @@
     <lastmod>2020-05-06</lastmod>
   </url>
   <url>
+    <loc>https://signfinger.com/</loc>
+    <lastmod>2020-05-06</lastmod>
+  </url>
+  <url>
     <loc>https://signfinger.com/id</loc>
     <lastmod>2020-05-06</lastmod>
   </url>

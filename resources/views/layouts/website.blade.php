@@ -16,7 +16,7 @@
     gtag('config', 'G-145249635');
   </script>
   @yield('meta')
-  <link rel="canonical" href="https://signfinger.com/">
+  <link rel="canonical" href="https://signfinger.com">
   <link type="image/png" href="{{ asset('images/icon.png') }}" rel="icon">
   <!-- Main Stylesheet File -->
   <link href="{{ mix('css/style.css') }}" rel="stylesheet">
@@ -28,14 +28,14 @@
 
 <body>
     <nav id="main-navbar" class="navbar navbar--ontop fixed-top bg-c-dark px-md-5 shadow">
-      <a class="navbar-brand" href="{{url("")}}">
+      <a class="navbar-brand" href="{{url("https://signfinger.com")}}">
         <img src="{{ asset('images/icon_signfinger.svg') }}" alt="">
         <img src="{{ asset('images/signfinger.svg') }}" alt="">
 
       </a>
       <div class="nav justify-content-end d-none d-md-flex">
-        <a class="mr-2 {{ (request()->is("/")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm' }} " href="{{url("")}}">EN</a>
-        <a class=" {{ (request()->is("id")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm'}} " href="{{url("/id")}}">ID</a>
+        <a class="mr-2 {{ (request()->is("/")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm' }} " href="{{url("https://signfinger.com")}}">EN</a>
+        <a class=" {{ (request()->is("id")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm'}} " href="{{url("https://signfinger.com/id")}}">ID</a>
       </div>
       <ul class="nav justify-content-end d-flex d-md-none">
         <button type="button" id="mobile-nav-button" class="btn btn-outline-warning btn-sm">
@@ -45,8 +45,8 @@
     </nav>
     <div id="mobile-sidebar" class="text-warning">
       <nav class="w-100 text-center">
-        <a class="{{ (request()->is("/")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm' }} " href="{{url("")}}">EN</a>
-        <a class=" {{ (request()->is("id")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm'}} " href="{{url("/id")}}">ID</a>
+        <a class="{{ (request()->is("/")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm' }} " href="{{url("https://signfinger.com")}}">EN</a>
+        <a class=" {{ (request()->is("id")) ? 'btn btn-warning btn-sm' : 'btn btn-outline-warning btn-sm'}} " href="{{url("https://signfinger.com/id")}}">ID</a>
 
       </nav>
     </div>

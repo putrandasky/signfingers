@@ -1,4 +1,7 @@
 # 19 Jun 2020
+## 1.1.2
+### FIXED
+  1. Link SEO Landing page
 ## 1.1.1
 ### FIXED
   1. Copywriter improvement on landing page

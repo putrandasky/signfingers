@@ -154,7 +154,7 @@
   <div class="container-fluid text-center bg-warning py-3 text-dark">
     <strong>
 
-      Developed by <a class="text-dark" href="https://alterfingers.com" target="_blank">Alterfingers</a> © 2020
+      Developed by <a class="text-dark" href="https://alterfingers.com" target="_blank">alterfingers.com</a> © 2020
     </strong>
   </div>
 </div>
