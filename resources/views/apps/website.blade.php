@@ -127,11 +127,15 @@
 </div>
 <div id="how-work" class="bg-c-dark-grey py-5">
   <div class=" container ">
-    {{-- <div class="row">
-      <div class="col-12">
-
+    <div class="row mb-5">
+      <div class="cols-12 w-100 text-warning text-center">
+        <h2>
+          <b>
+            @lang('website.how-work.title')
+          </b>
+        </h2>
       </div>
-    </div> --}}
+    </div>
     <carrousel-how-works locale="{{ (request()->is("id")) ? 'id' : 'en' }}"></carrousel-how-works>
 
   </div>

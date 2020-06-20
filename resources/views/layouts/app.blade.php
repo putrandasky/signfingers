@@ -15,15 +15,15 @@
     gtag('config', 'UA-145249635-2');
     gtag('config', 'G-145249635');
   </script>
-  <title>Digital Signing Platform | SignFinger </title>
+  <title>Digital Signature | Signfinger </title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta charset="utf-8">
   <meta name="author" content="Radityo Putra Paripurna | alterfingers.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <meta name="description" content="Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.">
-  <meta name="keywords" content="digital signing, esign, digital signature, sign digital">
+  <meta name="keywords" content="digital signature, free digital signature, digital signing, esign, electronic signature, e signature , electronic signing, online pdf signer, digital signature creation ,sign digital, free pdf signer, digital sign,finger sign, sign finger">
   <meta property="og:image" content="{{asset('images/landingpage_hero.png')}}">
-  <meta property="og:title" content="Digital Signing Platform | SignFinger " />
+  <meta property="og:title" content="Digital Signature Platform | SignFinger " />
   <meta property="og:url" content="https://signfinger.com" />
   <meta property="og:description" content="Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.">
    <link type="image/png" href="{{ asset('images/icon.png') }}" rel="icon">

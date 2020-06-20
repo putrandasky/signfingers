@@ -1,3 +1,7 @@
+# 20 Jun 2020
+## 1.1.3
+### FIXED
+  1. Copywriter with SEO improvement in landing page
 # 19 Jun 2020
 ## 1.1.2
 ### FIXED

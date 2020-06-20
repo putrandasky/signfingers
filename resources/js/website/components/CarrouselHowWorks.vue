@@ -2,14 +2,14 @@
 
   <div class="row">
     <div class="col-lg-6 mb-3">
-      <div class="w-100 text-warning text-center">
+      <!-- <div class="w-100 text-warning text-center">
         <h3>
           <strong>
             {{'howWork.title' | trans}}
           </strong>
 
         </h3>
-      </div>
+      </div> -->
       <div class="h-100 pt-5">
 
         <div v-show="this.currentIndex == 0">

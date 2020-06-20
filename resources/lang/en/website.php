@@ -4,7 +4,7 @@ return [
     'meta' => [
         'title' => 'Digital Signature | Signfinger',
         'description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
-        'keywords' => 'digital signature, digital signing, esign, electronic signature, e signature , sign digital, digital sign,finger sign, sign finger',
+        'keywords' => 'digital signature, free digital signature, digital signing, esign, electronic signature, e signature , electronic signing, online pdf signer, digital signature creation ,sign digital, free pdf signer, digital sign,finger sign, sign finger',
         'og_title' => 'Digital Signature | Signfinger',
         'og_site_name' => 'Signfinger',
         'og_description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
@@ -13,39 +13,39 @@ return [
     ],
     'hero' => [
         'title' => 'Digital Singature For Digitizing Signing Activities',
-        'subtitle' => 'Providing a free and secure digital signature platform in order to support new normal for your work and business. No registration, no download, and no fee or cost required',
+        'subtitle' => 'Free digital signature and secure platform in order to support new normal for your work and business. Start digital signature with no registration, no download, and no fee or cost required',
         'button' => 'Start Signing',
     ],
     'why' => [
-        'title' => 'Why using SignFinger?',
+        'title' => 'Why digital signature with SignFinger?',
         '1' => [
             'title' => 'No file stored',
             'subtitle' => 'What more secured for preventing data leaked than no data or file stored? We do not store any document even your digital signature in our storage for maximum security',
         ],
         '2' => [
             'title' => 'No download required',
-            'subtitle' => 'We value your time, so we make the platform for you to do all the process directly on the browser. No apps or download required to get the job done faster',
+            'subtitle' => 'We value your time, so we make the digital signature platform for you to do all the process directly on the browser. No apps or download required to get the job done faster',
         ],
         '3' => [
             'title' => 'No hassle',
-            'subtitle' => 'Digitizing your signature as easy as counting to three with shortest workflow to get the signing job done. Forget the way to digitize a signature in a document with a crop, copy, and paste from scanned signature',
+            'subtitle' => 'Digital signature creation as easy as counting to three with shortest workflow to get the signing job done. Forget the way to digitize a signature in a document with a crop, copy, and paste from scanned signature',
         ],
         '4' => [
             'title' => 'No register & sign in required',
-            'subtitle' => 'We make this platform to accelerate the signing job and we make it even faster because you can work directly after you open the web apps with no register and sign in required',
+            'subtitle' => 'We make digital signature platform to accelerate the signing job and we make it even faster because you can work directly after you open the web apps with no register and sign in required',
         ],
         '5' => [
             'title' => 'No printing / paperless',
-            'subtitle' => 'Supporting this earth to become greener with paperless habit. No need to print any document only just for signing activities',
+            'subtitle' => 'Supporting this earth to become greener with paperless habit with digital signature. No need to print any document only just for signing activities',
         ],
         '6' => [
             'title' => 'No cost or fee',
-            'subtitle' => ' Absolutely free, no cost and fee issue that will intefere your workflow to sign your own document',
+            'subtitle' => ' Absolutely free digital signature, no cost and fee issue that will intefere your workflow to signature creation of your own document',
         ],
     ],
-    'tagline' => 'One of the most important part of your job will be easier, ever.',
+    'tagline' => 'Digital signature make the one of the most important part of your job will be easier, ever.',
     'how-work' => [
-        'title' => 'Works as easy as counting to three',
+        'title' => 'Digital signature creation in three easy step',
         '1' => [
             'title' => 'Attach your file or document',
             'subtitle' => 'Select your desired file to be signed and attach it to the browser',
