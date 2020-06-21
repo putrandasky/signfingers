@@ -17,10 +17,13 @@
   </script>
   @yield('meta')
   <link rel="canonical" href="https://signfinger.com">
-  <link type="image/png" href="{{ asset('images/icon.png') }}" rel="icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+  <link rel="manifest" href="{{ asset('images/site.webmanifest') }}">
   <!-- Main Stylesheet File -->
   <link href="{{ mix('css/style.css') }}" rel="stylesheet">
   <link href="{{ mix('css/website/style.css') }}" rel="stylesheet">
+  <meta name="theme-color" content="#F5CB5C" />
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

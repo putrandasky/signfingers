@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-<meta name="author" content="Radityo Putra Paripurna | alterfingers.com">
+<meta name="author" content="signfinger.com">
 <meta name="description" content="@lang('website.meta.description')">
 <meta name="keywords" content="@lang('website.meta.keywords')">
 <meta property="og:title" content="@lang('website.meta.title')" />

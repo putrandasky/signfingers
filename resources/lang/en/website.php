@@ -3,13 +3,13 @@
 return [
     'meta' => [
         'title' => 'Digital Signature | Signfinger',
-        'description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
+        'description' => 'Digital signature for replacing conventional signing activities with digital. Signfinger provide digital signature platform without registration for free and secure.',
         'keywords' => 'digital signature, free digital signature, digital signing, esign, electronic signature, e signature , electronic signing, online pdf signer, digital signature creation ,sign digital, free pdf signer, digital sign,finger sign, sign finger',
         'og_title' => 'Digital Signature | Signfinger',
         'og_site_name' => 'Signfinger',
-        'og_description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
+        'og_description' => 'Digital signature for replacing conventional signing activities with digital. Signfinger provide digital signature platform without registration for free and secure.',
         'twitter_title' => 'Digital Signature | Signfinger',
-        'twitter_description' => 'Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.',
+        'twitter_description' => 'Digital signature for replacing conventional signing activities with digital. Signfinger provide digital signature platform without registration for free and secure.',
     ],
     'hero' => [
         'title' => 'Digital Singature For Digitizing Signing Activities',

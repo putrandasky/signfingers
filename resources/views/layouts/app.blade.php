@@ -18,7 +18,7 @@
   <title>Digital Signature | Signfinger </title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta charset="utf-8">
-  <meta name="author" content="Radityo Putra Paripurna | alterfingers.com">
+  <meta name="author" content="signfinger.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <meta name="description" content="Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.">
   <meta name="keywords" content="digital signature, free digital signature, digital signing, esign, electronic signature, e signature , electronic signing, online pdf signer, digital signature creation ,sign digital, free pdf signer, digital sign,finger sign, sign finger">
@@ -26,7 +26,13 @@
   <meta property="og:title" content="Digital Signature Platform | SignFinger " />
   <meta property="og:url" content="https://signfinger.com" />
   <meta property="og:description" content="Signfinger provide digital signature platform without registration for free and secure . Digital signature for replacing conventional signing activities with digital.">
-   <link type="image/png" href="{{ asset('images/icon.png') }}" rel="icon">
+      <meta name="theme-color" content="#F5CB5C" />
+  <link rel="canonical" href="https://signfinger.com">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+  <link rel="manifest" href="{{ asset('images/site.webmanifest') }}">
+<meta name="robots" content="all">
+<meta name="webcrawlers" content="all">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/website/style.css') }}" rel="stylesheet">

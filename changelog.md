@@ -1,4 +1,9 @@
 # 20 Jun 2020
+## 1.1.4
+### FIXED
+  1. Favicon follow google search guidline
+  2. alt text on image in how work image
+# 20 Jun 2020
 ## 1.1.3
 ### FIXED
   1. Copywriter with SEO improvement in landing page

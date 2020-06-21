@@ -44,13 +44,13 @@
       <div class="position-relative px-5">
         <carousel-3d :autoplay="false" :loop="false" :height="453" :width="270" :border="0" :controls-visible="true" :controls-prev-html="prev" :controls-next-html="next" :controls-width="10" :controls-height="10" @before-slide-change="change">
           <slide :index="0" v-show="currentIndex != 2">
-            <img class="how-work-img" src="/images/how_works_attach.jpeg" />
+            <img class="how-work-img" src="/images/how_works_attach.jpeg" alt="digital signature creation attach" />
           </slide>
           <slide :index="1">
-            <img class="how-work-img" src="/images/how_works_sign.jpeg" />
+            <img class="how-work-img" src="/images/how_works_sign.jpeg" alt="digital signature creation sign" />
           </slide>
           <slide :index="2" v-show="currentIndex != 0">
-            <img class="how-work-img" src="/images/how_works_download.jpeg" />
+            <img class="how-work-img" src="/images/how_works_download.jpeg" alt="digital signature creation download" />
           </slide>
         </carousel-3d>
 

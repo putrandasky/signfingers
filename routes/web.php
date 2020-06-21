@@ -27,5 +27,8 @@ Route::get('/sign-file', function () {
 Route::get('/sitemap', function () {
     return view('sitemap.index');
 });
+Route::get('/sitemap.xml', function () {
+    return view('sitemap.index');
+});
 Route::get('/signer', 'Signer\SignerController@index');
 Route::post('/generate', 'Signer\SignerController@generate');
