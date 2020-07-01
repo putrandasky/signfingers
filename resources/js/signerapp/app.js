@@ -17,13 +17,28 @@ import 'vue-material-design-icons/styles.css';
 import VueSignaturePad from "vue-signature-pad";
 import VueMq from 'vue-mq';
 import Vuex from 'vuex'
+import VueSocialSharing from 'vue-social-sharing'
 import {
   store
 } from './store/index';
+var Lang = require('lang.js');
+import source from "./i18n/localization"
+var lang = new Lang({
+  messages: source,
+  locale: window.location.pathname == '/tanda-tangan-digital' ? 'id' : 'en',
+});
+Vue.prototype.$filters = Vue.options.filters
+Vue.prototype.$lang = lang
+Vue.filter('trans', (...args) => {
+  return lang.get(...args);
+});
+
+// console.log(lang.getLocale());
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueSignaturePad);
-Vue.use(Vuex)
+Vue.use(Vuex);
+Vue.use(VueSocialSharing);
 Vue.use(VueMq, {
   breakpoints: {
     xs: 576,

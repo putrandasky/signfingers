@@ -12,7 +12,7 @@
       <b-btn variant="secondary" size="sm" @click="handleUndoFileLoaded">
         <!-- <i class="fa fa-1x text-white fa-undo"></i> -->
         <b>
-          Back
+          {{'controlPage.back' | trans}}
         </b>
       </b-btn>
       <b-input class="mx-2" size="sm" type="number" :min="1" :max="pageCount" style="max-width:40px" v-model.number="currentPage" @input="handleGoClick"></b-input>
@@ -27,7 +27,10 @@
         <i class="fa fa-2x text-white fa-arrow-circle-o-right"></i>
       </b-btn>
       <b-btn size="sm" class="ml-2 text-left" variant="warning" @click="handleSelectClick">
-        <b>Next</b>
+        <b>
+          {{'controlPage.next' | trans}}
+
+        </b>
 
       </b-btn>
     </div>

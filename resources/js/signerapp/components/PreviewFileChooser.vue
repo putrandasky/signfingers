@@ -1,16 +1,16 @@
 <template>
   <div class="text-center">
     <div>
-      File must be in PDF Format
+      {{'fileChooser.info1' | trans}}
     </div>
     <b-btn variant="warning shadow my-3" class="" @click="handleClick()">
       <b>
-        Choose File Here
+        {{'fileChooser.button' | trans}}
       </b>
     </b-btn>
     <input class="d-none" type="file" ref="fileInput" name="fileInput" id="fileInput" v-on:change="handleFileUpload()" accept="application/pdf" />
     <div>
-      Your document will be previewed here
+      {{'fileChooser.info2' | trans}}
     </div>
     <!-- <b-alert v-model="showAlert" class="position-fixed fixed-top m-0 rounded-0" style="z-index: 2000" variant="success" dismissible>
       <div style="display:table">
@@ -57,7 +57,13 @@
         console.log(this.$refs.fileInput.files[0]);
         let file = this.$refs.fileInput.files[0]
         if (!/\.(pdf)$/i.test(file.name)) {
-          this.$bvToast.show('not-pdf-toast')
+          // this.$bvToast.show('not-pdf-toast')
+          EventBus.$emit('showToast', {
+            title: this.$filters.trans('fileChooser.toast.notPdf.title'),
+            body: this.$filters.trans('fileChooser.toast.notPdf.body'),
+            variant: "danger",
+            visible: true
+          })
           this.setLoading(false)
           return
         }

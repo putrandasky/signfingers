@@ -2,7 +2,7 @@
   <b-modal v-model="isShowShowSignatureModal" modal-class="signature-pad-modal" :hide-header-close="true" :no-close-on-backdrop="true" centered ok-variant="warning" @hidden="handleHiddenModal" @show="handleShowModal" @ok="saveSignature" @cancel="handleCancelModal">
     <template v-slot:modal-title>
       <b>
-        Draw Your Signature
+        {{'signaturePad.title' | trans}}
       </b>
     </template>
     <div id="parentPad" class="position-relative" :style="{height:padHeight,'background-color':'#fff'}" ref="parentPad">
@@ -11,8 +11,12 @@
     </div>
 
     <div class="mt-2">
-      <b-btn variant="secondary" size="sm" @click="refreshInstanceSignPad">Clear</b-btn>
-      <b-btn variant="secondary" size="sm" @click="handleUndoButton">Undo</b-btn>
+      <b-btn variant="secondary" size="sm" @click="refreshInstanceSignPad">
+        {{'signaturePad.clearButton' | trans}}
+      </b-btn>
+      <b-btn variant="secondary" size="sm" @click="handleUndoButton">
+        {{'signaturePad.undoButton' | trans}}
+      </b-btn>
       <div class="d-inline-block">
         <!-- <div class="text-white text-center">
           <small>
@@ -25,15 +29,15 @@
       </div>
     </div>
     <small class="text-white">
-      Tips : Try to draw a signature on a whole square for the best fit result on the page
+      {{'signaturePad.tips' | trans}}
     </small>
     <template v-slot:modal-ok>
       <i class="fa fa-search"></i>
-      Preview
+      {{'signaturePad.previewButton' | trans}}
     </template>
     <template v-slot:modal-cancel>
       <i class="fa fa-close"></i>
-      Cancel
+      {{'signaturePad.cancelButton' | trans}}
     </template>
   </b-modal>
 </template>
@@ -59,15 +63,15 @@
         padHeight: "1px",
         dataColorPen: [{
             color: 'black',
-            title: 'Black'
+            title: this.$filters.trans('signaturePad.blackColorPenButton')
           },
           {
             color: 'blue',
-            title: 'Blue'
+            title: this.$filters.trans('signaturePad.blueColorPenButton')
           },
           {
             color: 'green',
-            title: 'Green'
+            title: this.$filters.trans('signaturePad.greenColorPenButton')
           }
         ],
         padOptions: {
@@ -157,7 +161,13 @@
         } = this.$refs.signaturePad.saveSignature()
 
         if (isEmpty) {
-          this.$bvToast.show('empty-signpad-toast')
+          // this.$bvToast.show('empty-signpad-toast')
+          EventBus.$emit('showToast', {
+            title: "ERROR",
+            body: "You are not drawing any signature",
+            variant: "danger",
+            visible: true
+          })
           e.preventDefault()
           return
         }

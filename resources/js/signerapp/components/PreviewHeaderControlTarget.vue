@@ -5,19 +5,22 @@
       <b-btn size="sm" variant="secondary" @click="handleCancelClick">
         <i class="fa fa-close"></i>
         <b>
-          Cancel
+          {{'controlTarget.cancel' | trans}}
+
         </b>
       </b-btn>
       <b-btn size="sm" variant="c-white" @click="handleResetClick">
         <i class="fa fa-refresh"></i>
         <b>
-          Reset
+          {{'controlTarget.reset' | trans}}
+
         </b>
       </b-btn>
       <b-btn size="sm" variant="warning " @click="handleApplyClick">
         <i class="fa fa-check"></i>
         <b>
-          Apply
+          {{'controlTarget.apply' | trans}}
+
         </b>
       </b-btn>
     </div>

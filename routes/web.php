@@ -13,22 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('', function () {
-    // App::setLocale($locale);
-    return view('apps.website');
-});
-Route::get('/id', function () {
-    App::setLocale('id');
-    return view('apps.website');
-});
 Route::get('/sign-file', function () {
-    return view('apps.app');
+    return redirect('/digital-signature');
+
 });
-Route::get('/sitemap', function () {
-    return view('sitemap.index');
-});
-Route::get('/sitemap.xml', function () {
-    return view('sitemap.index');
-});
+Route::get('/digital-signature', 'Signer\SignerController@view');
+Route::get('/tanda-tangan-digital', 'Signer\SignerController@view');
+
+// Route::get('/sitemap', function () {
+//     return view('sitemap.index');
+// });
+Route::get('/sitemap', 'Sitemap\SitemapController@index');
+Route::get('/sitemap.xml', 'Sitemap\SitemapController@index');
+
+// Route::get('/sitemap.xml', function () {
+//     return view('sitemap.index');
+// });
 Route::get('/signer', 'Signer\SignerController@index');
 Route::post('/generate', 'Signer\SignerController@generate');
+Route::post('/inbox/feedback/{locale}', 'Inbox\FeedbackController@store');
+Route::post('/inbox/message/{locale}', 'Inbox\MessageController@store');
+Route::post('/inbox/review/{locale}', 'Inbox\ReviewController@store');
+Route::get('/{locale}', 'Website\WebsiteController@homePage');
+Route::get('', 'Website\WebsiteController@homePage');

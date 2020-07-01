@@ -1,5 +1,6 @@
 <template>
   <b-container fluid class="h-100 py-3">
+
     <b-row class="h-100 align-items-start " :class="isFileUploaded?'':'flex-column flex-lg-row' ">
       <b-col lg="6" class="d-flex  justify-content-center pt-lg-5 pt-0 ">
         <stepper />
@@ -27,7 +28,7 @@
       </b-col>
       <modal-signature-pad v-if="isFileUploaded && [3,4].includes(step)" />
     </b-row>
-    <toaster-collection></toaster-collection>
+    <!-- <toaster-collection></toaster-collection> -->
     <modal-collection></modal-collection>
 
     <mq-layout :mq="['xs','sm', 'md']" class=" position-fixed w-100" style="bottom:0;left:0;z-index:1000" id="previewControl" ref="previewControl">
@@ -35,6 +36,9 @@
       <header-control-target v-if="isFileUploaded && step == 3" ref="headerControlTarget" />
       <header-control-download v-if="isFileUploaded && step == 4" ref="headerControlDownload" />
     </mq-layout>
+    <feedback />
+    <c-b-toast />
+
   </b-container>
 </template>
 <script>
@@ -54,21 +58,27 @@
   import Dragger from "./PreviewDragger"
   import ModalSignaturePad from "./ModalSignaturePad"
   import debounce from './package/debounce'
-  import ToasterCollection from './ToasterCollection'
+  import Feedback from './Feedback'
+  // import ToasterCollection from './ToasterCollection'
   import ModalCollection from './ModalCollection'
+  import CBToast from './custom/CustomToast'
+
   export default {
     name: 'app',
     components: {
       pdf,
       Stepper,
+      Feedback,
       HeaderControlPage,
       HeaderControlTarget,
       HeaderControlDownload,
       Dragger,
       ModalSignaturePad,
       FileChooser,
-      ToasterCollection,
-      ModalCollection
+      // ToasterCollection,
+      ModalCollection,
+      CBToast
+
     },
     data: function() {
       return {
@@ -82,6 +92,9 @@
       this.$nextTick(function() {
         window.addEventListener('resize', this.updateParentPage);
       })
+      // console.log(this.$lang.getLocale());
+      // this.$bvModal.show('endModal')
+
     },
     watch: {
       '$mq': function(newVal, oldVal) {

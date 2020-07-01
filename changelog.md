@@ -1,3 +1,15 @@
+
+# 20 Jun 2020
+## 1.2
+
+### ADDED
+  1. Able to send review, rating after signing document on endModal
+  2. Able to send feedback, add 'feedback' button on top of window
+  3. i18n on signing apps with en and id in signing apps
+  4. add lang.js for localization
+### FIXED
+  1. Download pdf on ios showing blob instead of download
+
 # 20 Jun 2020
 ## 1.1.4
 ### FIXED

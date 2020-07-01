@@ -4,14 +4,15 @@
       <b-btn size="sm" variant="secondary " @click="handleCancelClick">
         <i class="fa fa-close"></i>
         <b>
-          Cancel
+          {{'controlDownload.cancel' | trans}}
         </b>
       </b-btn>
       <b-overlay :show="busy" rounded opacity="0.6" spinner-small spinner-variant="c-dark" class="d-inline-block">
         <b-btn size="sm" variant="warning " @click="handleDownloadClick">
           <i class="fa fa-download"></i>
           <b>
-            Download
+            {{'controlDownload.download' | trans}}
+
           </b>
         </b-btn>
       </b-overlay>
@@ -89,7 +90,7 @@
           })
           .then(response => {
             console.log({
-              'response-header': response.headers,
+              'response-header': response.headers['content-type'],
               'response': response,
 
             });
@@ -99,7 +100,10 @@
             // FileSaver.saveAs(response.data, splitedContentDisposition[1]);
             // let d = new Date()
             // let dateTimeFormatted = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()} ${d.getHours()}${d.getMinutes()}`
-            FileSaver.saveAs(response.data, response.headers.filename);
+            const file = new Blob([response.data], {
+              type: 'application/octet-stream'
+            })
+            FileSaver.saveAs(file, response.headers.filename);
             // FileSaver.saveAs(response.data, `${this.fileName.substr(0, this.fileName.lastIndexOf("."))} Signed ${dateTimeFormatted}.pdf`);
             this.busy = false
             this.setFileSigned(true)
@@ -114,7 +118,13 @@
           })
           .catch(error => {
             console.log(error);
-            this.$bvToast.show('error-toast')
+            EventBus.$emit('showToast', {
+              title: "ERROR",
+              body: "Something error, try again later",
+              variant: "danger",
+              visible: true
+            })
+            // this.$bvToast.show('error-toast')
             this.busy = false
 
           });

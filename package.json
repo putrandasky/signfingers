@@ -37,6 +37,7 @@
     "vue-moveable": "^1.8.1",
     "vue-mq": "^1.0.1",
     "vue-signature-pad": "^2.0.2",
+    "vue-social-sharing": "^3.0.0-beta.11",
     "vuex": "^3.4.0"
   }
 }

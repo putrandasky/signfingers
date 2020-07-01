@@ -75,9 +75,61 @@ h6 {
   ;
 }
 
+.share-network-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+a[class^="share-network-"] {
+  flex: none;
+  color: #FFFFFF !important;
+  background-color: #333;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 10px 10px 0;
+  width: fit-content;
+}
+
+a[class^="share-network-"] .fa {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  flex: 0 1 auto;
+}
+
+a[class^="share-network-"] span {
+  padding: 0 10px;
+  flex: 1 1 0%;
+  font-weight: 500;
+}
+
+
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
 $fa-font-path: '~font-awesome/fonts/';
 @import "~font-awesome/scss/font-awesome.scss";
+
+.btn-feedback {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  transform: translate(-50%, -10%);
+
+  @include media-breakpoint-down(md) {
+    left: 75%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    left: 25%;
+  }
+}

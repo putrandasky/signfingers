@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 px-lg-5 px-0">
     <div class="mb-3">
-      <a href="./">
+      <a :href="getHomeUrl">
         <b-img style="height:40px" fluid src="/images/signfinger.svg"></b-img>
       </a>
     </div>
@@ -26,29 +26,37 @@
     data: function() {
       return {
         data: [{
-            title: '1. Choose your file',
+            title: this.$filters.trans('stepper.1'),
             class: 'mb-3'
           },
           {
-            title: '2. Select page',
+            title: this.$filters.trans('stepper.2'),
             class: 'mb-3'
           },
           {
-            title: '3. Define area & sign',
+            title: this.$filters.trans('stepper.3'),
             class: 'mb-3'
           },
           {
-            title: '4. Preview & download',
+            title: this.$filters.trans('stepper.4'),
             class: 'mb-3'
           },
         ]
       }
     },
     created() {},
-    computed: mapState({
-      step: state => state.step,
-    }),
-    methods: {},
+    computed: {
+      getHomeUrl() {
+
+        return this.$lang.getLocale() == 'id' ? './id' : './'
+      },
+      ...mapState({
+        step: state => state.step,
+      })
+    },
+    methods: {
+
+    },
   }
 </script>
 <style>

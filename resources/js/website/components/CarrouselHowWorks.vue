@@ -63,7 +63,7 @@
 </template>
 <script>
   var Lang = require('lang.js');
-  import source from "../localization"
+  import source from "../i18n/localization"
   import {
     Carousel3d,
     Slide

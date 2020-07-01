@@ -2,24 +2,8 @@
 
 @section('meta')
 <title>@lang('website.meta.title')</title>
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-<meta name="author" content="signfinger.com">
-<meta name="description" content="@lang('website.meta.description')">
-<meta name="keywords" content="@lang('website.meta.keywords')">
-<meta property="og:title" content="@lang('website.meta.title')" />
-<meta property="og:site_name" content="@lang('website.meta.og_site_name')" />
-<meta property="og:type" content="website" />
-<meta property="og:description" content="@lang('website.meta.og_description')">
-<meta property="og:image" content="{{asset('images/landingpage_hero.png')}}">
-<meta property="og:url" content="https://signfinger.com" />
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="@lang('website.meta.twitter_title')">
-<meta name="twitter:description" content="@lang('website.meta.twitter_description')">
-<meta name="twitter:image:src" content="{{asset('images/landingpage_hero.png')}}">
-<meta name="robots" content="all">
-<meta name="webcrawlers" content="all">
+
+@include('include.meta')
 @endsection
 
 @section('content')
@@ -147,7 +131,7 @@
         @lang('website.cta.title')
       </strong>
     </h2>
-    <a href='{{url("sign-file")}}' class="btn btn-warning mt-5">
+    <a href='{{(request()->is("id")) ?  url("tanda-tangan-digital") : url("digital-signature")}}' class="btn btn-warning mt-5">
       <strong>
         @lang('website.cta.button')
       </strong>
