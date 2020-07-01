@@ -12,7 +12,7 @@ return [
         'twitter_description' => 'Digital signature for replacing conventional signing activities with digital. Signfinger provides free and secure digital signature platform without registration.',
     ],
     'hero' => [
-        'title' => 'Digital Singature For Digitizing Signing Activities',
+        'title' => 'Digital Signature For Digitizing Signing Activities',
         'subtitle' => 'Free digital signature and secure platform in order to support new normal for your work and business. Start digital signature with no registration, no download, and no fee or cost required',
         'button' => 'Start Signing',
     ],
