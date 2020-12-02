@@ -1,5 +1,10 @@
 
 # 20 Jun 2020
+## 1.3
+
+### ADDED
+  1. Add meta tags http-equiv content policy security 
+# 20 Jun 2020
 ## 1.2
 
 ### ADDED
