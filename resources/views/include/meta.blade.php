@@ -1,5 +1,10 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self';font-src 'self'; img-src 'self' data: https:; style-src 'self' ; script-src 'self'">
+<meta http-equiv="Content-Security-Policy"
+    content="
+      worker-src blob:;
+      child-src blob: gap:;
+      img-src 'self' blob: data:;
+      default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 <meta name="author" content="signfinger.com">
