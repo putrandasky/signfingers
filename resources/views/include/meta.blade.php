@@ -1,7 +1,6 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta http-equiv="Content-Security-Policy"
     content="
-      worker-src blob:;
       child-src blob: gap:;
       img-src 'self' blob: data:;
       default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
