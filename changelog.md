@@ -1,4 +1,9 @@
 
+# 1 Jan 2021
+## 1.3.1
+
+### DELETED
+  1.  meta tags  content policy security 
 # 20 Jun 2020
 ## 1.3
 
