@@ -35,11 +35,12 @@ class SignerController extends Controller
 
         preg_match_all('!\d+!', $line_first, $matches); // extract number such as 1.4,1.5 from first read line of pdf file
 
+ 
         $pdfversion = implode('.', $matches[0]); // save that number in a variable
         if ($pdfversion > "1.4") { //if above 1.4 version, using ghostscript version
             $tempNewFile = tempnam(sys_get_temp_dir(), Str::random());
 
-            shell_exec('gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="' . $tempNewFile . '" "' . $request->file('itemFile') . '"');
+            shell_exec('gs -dBATCH -dNOPAUSE -dAutoRotatePages=/None -q -sDEVICE=pdfwrite -sOutputFile="' . $tempNewFile . '" "' . $request->file('itemFile') . '"');
 
             $pagecount = $fpdi->setSourceFile($tempNewFile);
 
@@ -50,6 +51,8 @@ class SignerController extends Controller
         }
 
         for ($i = 0; $i < $pagecount; $i++) {
+
+
             if ($i == ($signedPage - 1)) {
                 $tppl = $fpdi->importPage($i + 1);
                 $sizeTemplate = $fpdi->getTemplatesize($tppl);

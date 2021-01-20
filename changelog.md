@@ -1,14 +1,22 @@
 
 # 1 Jan 2021
+## 1.4.0
+
+### FIXED
+  1.  Disable autorotate for landscape document
+
+# 1 Jan 2021
 ## 1.3.1
 
 ### DELETED
   1.  meta tags  content policy security 
+
 # 20 Jun 2020
 ## 1.3
 
 ### ADDED
   1. Add meta tags http-equiv content policy security 
+
 # 20 Jun 2020
 ## 1.2
 
