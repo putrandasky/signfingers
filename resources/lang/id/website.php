@@ -14,7 +14,8 @@ return [
     'hero' => [
         'title' => 'Tanda Tangan Digital Untuk Digitalisasi Aktifitas Bertanda Tangan',
         'subtitle' => 'Tanda tangan digital gratis dan aman dalam hal mendukung new normal untuk segala pekerjaan dan bisnis anda. Mulai tanda tangan digital dengan tidak perlu mendaftar, tidak perlu mengunduh, dan tidak perlu biaya.',
-        'button' => 'Mulai Tanda Tangan',
+        'buttonOutline' => 'Tanda Tangan Sendiri',
+        'buttonSolid' => 'Mulai Ajukan Tanda Tangan',
     ],
     'why' => [
         'title' => 'Mengapa tanda tangan digital melalui SignFinger?',
@@ -42,6 +43,8 @@ return [
             'title' => 'Tanpa biaya',
             'subtitle' => 'Tanda tangan digital yang benar-benar gratis, tidak ada kendala biaya yang akan mempengaruhi alur kerja dalam akftifitas membuat tanda tangan',
         ],
+        'footnote' => '* Tanpa menyimpan data untuk fitur swa tanda tangan. Fitur mengajukan tanda tangan menggunakan enkripsi AES-256 untuk menjaga data anda tersimpan dengan aman.',
+
     ],
     'tagline' => 'Tanda tangan digital membuat salah satu bagian terpenting dalam pekerjaan anda akan lebih mudah dari yang pernah anda alami.',
     'how-work' => [
@@ -61,7 +64,8 @@ return [
     ],
     'cta' => [
         'title' => 'Selesaikan perihal penandatanganan pada pekerjaan anda, lebih mudah.',
-        'button' => 'Mulai Tanda Tangan',
+        'buttonOutline' => 'Tanda Tangan Sendiri',
+        'buttonSolid' => 'Mulai Ajukan Tanda Tangan',
     ],
 
 ];

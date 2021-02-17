@@ -1,5 +1,12 @@
 
-# 1 Jan 2021
+# 18 Feb 2021
+## 1.5.0 - Dev 1.0
+
+### ADDED
+  1.  Sign Request Feature!
+  2. Button to sign request Feature on homepage
+
+# 21 Jan 2021
 ## 1.4.0
 
 ### FIXED

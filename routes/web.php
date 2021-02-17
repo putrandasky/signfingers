@@ -18,6 +18,11 @@ Route::get('/sign-file', function () {
 
 });
 Route::get('/digital-signature', 'Signer\SignerController@view');
+Route::get('/sign-request', 'Signer\SignRequestController@view');
+Route::post('/sign-request', 'Signer\SignRequestController@store');
+Route::get('/sign-request/sign-file/{signer_token}', 'Signer\SignRequestRespondController@view');
+Route::post('/sign-request/sign-file/{signer_token}', 'Signer\SignRequestRespondController@store');
+Route::get('/sign-request/token/{signer_token}', 'Signer\SignRequestRespondController@show');
 Route::get('/tanda-tangan-digital', 'Signer\SignerController@view');
 
 // Route::get('/sitemap', function () {

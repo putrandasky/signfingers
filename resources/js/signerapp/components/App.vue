@@ -142,5 +142,5 @@
   }
 </script>
 <style lang="scss">
-  @import '../custom.scss';
+  @import '../../../sass/app.scss';
 </style>

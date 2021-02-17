@@ -12,7 +12,6 @@ class FeedbackController extends Controller
     {
         $rules = [
             'messages' => 'required|min:10',
-
         ];
         if ($locale == 'id') {
             $messages_validator = [

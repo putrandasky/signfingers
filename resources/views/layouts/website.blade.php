@@ -9,13 +9,13 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
   <link rel="manifest" href="{{ asset('images/site.webmanifest') }}">
   <!-- Main Stylesheet File -->
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ mix('css/style.css') }}" rel="stylesheet">
-  <link href="{{ mix('css/website/style.css') }}" rel="stylesheet">
 
 
 </head>
 
-<body>
+<body class=" bg-c-dark ">
     <nav id="main-navbar" class="navbar navbar--ontop fixed-top bg-c-dark px-md-5 shadow">
       <a class="navbar-brand" href="{{url("")}}">
         <img src="{{ asset('images/icon_signfinger.svg') }}" alt="">

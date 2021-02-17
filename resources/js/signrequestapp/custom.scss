@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$yellow: #F5CB5C;
+$white : #E8EDDF;
+$c-dark :#242423;
+$c-dark-grey :#333533;
+$c-grey :#CFDBD5;
+$c-white :#E8EDDF;
+
+$body-bg : $c-dark;
+// $colors:(
+//     "white":      #E8EDDF,
+// );
+$font-family-base: 'Roboto',
+sans-serif;
+$btn-font-family: 'Montserrat',
+sans-serif;
+
+$theme-colors: ("c-dark": $c-dark,
+  "c-dark-grey": $c-dark-grey,
+  "c-grey": $c-grey,
+  "c-white": $c-white,
+  "c-green": #76F5CF,
+  "black": #000,
+  "blue" :#007bff,
+  "green" :#28a745);
+
+.modal-content {
+  background-color: $c-dark;
+
+  .modal-header {
+    background-color: $c-dark;
+    border-color: $c-dark;
+    color: $c-white;
+  }
+
+  .modal-body {
+    background-color: $c-dark;
+  }
+
+  .modal-footer {
+    background-color: $c-dark;
+    border-color: $c-dark;
+  }
+}
+
+.signature-pad-modal>.modal-body {
+  padding-top: unset;
+  padding-bottom: unset;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  ;
+}
+
+.share-network-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+a[class^="share-network-"] {
+  flex: none;
+  color: #FFFFFF !important;
+  background-color: #333;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 10px 10px 0;
+  width: fit-content;
+}
+
+a[class^="share-network-"] .fa {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  flex: 0 1 auto;
+}
+
+a[class^="share-network-"] span {
+  padding: 0 10px;
+  flex: 1 1 0%;
+  font-weight: 500;
+}
+
+
+
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
+$fa-font-path: '~font-awesome/fonts/';
+@import "~font-awesome/scss/font-awesome.scss";
+
+.btn-feedback {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  transform: translate(-50%, -10%);
+
+  @include media-breakpoint-down(md) {
+    left: 75%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    left: 25%;
+  }
+}

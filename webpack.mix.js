@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+require('laravel-mix-merge-manifest');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -30,13 +30,13 @@ mix.webpackConfig({
 });
 mix
   .js('resources/js/signerapp/app.js', 'public/js/signerapp.js')
-  .js('resources/js/website/app.js', 'public/js/website.js')
-  .sass('resources/js/signerapp/custom.scss', 'public/css/style.css')
-  .sass('resources/sass/website.scss', 'public/css/website/style.css');
-
+  .js('resources/js/signrequestrespondapp/app.js', 'public/js/signrespondapp.js')
+  .js('resources/js/signrequestapp/app.js', 'public/js/signrequestapp.js')
+  .js('resources/js/website/app.js', 'public/js/website.js').mergeManifest();;
 
 
 if (mix.inProduction()) {
+
   mix.version();
   mix.options({
     terser: {

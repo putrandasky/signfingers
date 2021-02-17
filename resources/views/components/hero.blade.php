@@ -4,9 +4,14 @@
       <h1 id="hero-title" class="text-warning  font-weight-bold">{{$title}}</h1>
       <p class="text-white mx-md-5 px-md-5">{{$slot}}
       </p>
-      <a href='{{(request()->is("id")) ?  url("tanda-tangan-digital") : url("digital-signature")}}' class="btn btn-warning mt-5">
+      <a href='{{(request()->is("id")) ?  url("tanda-tangan-digital") : url("digital-signature")}}' class="btn btn-outline-warning mt-5">
         <strong>
-          {{$button}}
+          {{$buttonOutline}}
+        </strong>
+      </a>
+      <a href='sign-request' class="btn btn-warning mt-5">
+        <strong>
+          {{$buttonSolid}}
         </strong>
       </a>
     </div>

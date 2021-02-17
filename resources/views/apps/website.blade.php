@@ -14,8 +14,11 @@
 
   </x-slot>
   @lang('website.hero.subtitle')
-  <x-slot name="button">
-    @lang('website.hero.button')
+  <x-slot name="buttonOutline">
+    @lang('website.hero.buttonOutline')
+  </x-slot>
+  <x-slot name="buttonSolid">
+    @lang('website.hero.buttonSolid')
   </x-slot>
 </x-hero>
 
@@ -39,7 +42,7 @@
           <i class="fa fa-save fa-stack-1x text-warning"></i>
         </x-slot>
         <x-slot name="title">
-          @lang('website.why.1.title')
+          @lang('website.why.1.title') *
         </x-slot>
         @lang('website.why.1.subtitle')
       </x-why-item>
@@ -101,6 +104,9 @@
       </x-why-item>
     </div>
   </div>
+  <div class="text-white">
+    <small>@lang('website.why.footnote')</small>
+  </div>
 </div>
 <div id="tagline" class="parallax py-5" style="background-image:linear-gradient(rgba(232, 237, 223, 0.8), rgba(232, 237, 223, 0.8)),url({{ asset('images/bg_tagline.jpg') }})">
   <div class="container py-5">
@@ -131,9 +137,14 @@
         @lang('website.cta.title')
       </strong>
     </h2>
+    <a href='{{(request()->is("id")) ?  url("tanda-tangan-digital") : url("digital-signature")}}' class="btn btn-outline-warning mt-5">
+      <strong>
+        @lang('website.cta.buttonOutline')
+      </strong>
+    </a>
     <a href='{{(request()->is("id")) ?  url("tanda-tangan-digital") : url("digital-signature")}}' class="btn btn-warning mt-5">
       <strong>
-        @lang('website.cta.button')
+        @lang('website.cta.buttonSolid')
       </strong>
     </a>
   </div>
