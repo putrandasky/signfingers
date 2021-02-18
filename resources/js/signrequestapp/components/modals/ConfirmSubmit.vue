@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="confirmSubmitModal" :no-close-on-backdrop="true" header-class="pb-0" :hide-header-close="true" centered @cancel="handleClickCancel" @ok="submitData">
+  <b-modal visible id="confirmSubmitModal" :no-close-on-backdrop="true" header-class="pb-0" :hide-header-close="true" centered @cancel="handleClickCancel" @ok="submitData">
     <template v-slot:modal-title>
       <b>
         {{'confirmSubmitModal.title' | trans}}
@@ -83,7 +83,6 @@
         let itemInput = JSON.stringify(data);
         var form = new FormData();
         form.append("itemInput", itemInput);
-        form.append("timeZone", Intl.DateTimeFormat().resolvedOptions().timeZone);
         form.append("itemFile", this.$store.state.dataPdf.raw);
         axios.post(`/sign-request`, form, {
             headers: {
@@ -98,7 +97,7 @@
             this.SIGNERTOKEN(response.data.signer_token)
           })
           .catch((error) => {
-            console.log(error);
+            console.log(error.response.data);
           })
       },
       clearData() {

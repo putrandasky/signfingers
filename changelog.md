@@ -1,5 +1,11 @@
 
 # 18 Feb 2021
+## 1.5.2 
+### Fixing
+- ipad ios can not sign request!
+
+### ADDED
+# 18 Feb 2021
 ## 1.5.1
 
 ### ADDED
