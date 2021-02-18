@@ -66,8 +66,7 @@ class Requester extends Notification
             ->subject("Your Sign Request #{$this->data->stamp_id}")
             ->markdown('mail.sign_request.requester', ['data' => $this->data])
             ->attach($tempNewFile, [
-                'as' => $this->data->filename,
-                'mime' => 'application/pdf',
+                'as' => $this->data->filename . ".pdf",
             ]);
     }
 
