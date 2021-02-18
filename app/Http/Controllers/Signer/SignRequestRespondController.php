@@ -32,11 +32,11 @@ class SignRequestRespondController extends Controller
             # code...
             return response()->json(['status' => 'Unauthorized', 'message' => 'Your document already signed'], 401);
         }
-        if ($data->signStatus->id == 1) {
-            # code...
-            return response()->json(['status' => 'Unauthorized', 'message' => 'You can not sign this document for now'], 401);
-        }
-        if ($data->signStatus->id == 2) {
+        // if ($data->signStatus->id == 1) {
+        //     # code...
+        //     return response()->json(['status' => 'Unauthorized', 'message' => 'You can not sign this document for now'], 401);
+        // }
+        if ($data->signStatus->id == 2 || $data->signStatus->id == 1) {
             # code...
             return response()->json(['status' => 'Authorized', 'signer_data' => $data], 200);
         }
@@ -46,6 +46,10 @@ class SignRequestRespondController extends Controller
     public function store(Request $request, $signer_token)
     {
         $signer = App\Signer::where('token', $signer_token)->with('requester', 'signAreas')->first();
+        if ($signer->sign_status_id != 2 && $signer->sign_status_id != 1) {
+            return response()->json(['status' => 'Unauthorized', 'message' => 'You dont have any authorization'], 401);
+        }
+
         $requester = $signer->requester;
         $sign_areas = $signer->signAreas;
         $encrypted_filename = hash('sha256', $requester->email . $requester->filename . $requester->id);

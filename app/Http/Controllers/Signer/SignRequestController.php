@@ -19,16 +19,21 @@ class SignRequestController extends Controller
     public function store(Request $request)
     {
         $item = json_decode($request->input('itemInput'), true);
-
+        if ($request->file('itemFile')->extension() != 'pdf') {
+            return response()->json(['status' => 'error', 'message' => 'wrong file type'], 401);
+        }
+        $filename = pathinfo($request->file('itemFile')->getClientOriginalName(), PATHINFO_FILENAME);
         $requester = new App\Requester();
         $requester->name = $item['requester']['name'];
         $requester->email = $item['requester']['email'];
         $requester->message = $item['requester']['messages'];
-        $requester->filename = $item['fileName'];
+        $requester->filename = $filename;
         $requester->public_id = Str::random(100) . time();
+        $requester->stamp_id = time() . rand(10, 99);
         $requester->save();
 
-        for ($i = 0; $i < count($item['signer']); $i++) {
+        $signer_count = count($item['signer']);
+        for ($i = 0; $i < $signer_count; $i++) {
             $signer = new App\Signer();
             $signer->name = $item['signer'][$i]['name'];
             $signer->email = $item['signer'][$i]['email'];
@@ -53,7 +58,7 @@ class SignRequestController extends Controller
             }
 
         }
-        $encrypted_filename = hash('sha256', $requester->email . $requester->filename . $requester->id);
+        $encrypted_filename = hash('sha256', $requester->email . $filename . $requester->id);
         $file = $request->file('itemFile');
         // $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $fileContent = $file->get();
@@ -68,6 +73,9 @@ class SignRequestController extends Controller
         $data = App\Requester::where('id', $requester->id)->with('signers')->first();
         dispatch(new ProcessSignRequest($data));
 
-        return response()->json(['message' => 'success'], 200);
+        if ($signer_count == 1) {
+            # code...
+            return response()->json(['message' => 'success', 'signer_token' => $signer->token], 200);
+        }
     }
 }

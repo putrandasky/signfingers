@@ -1,5 +1,13 @@
 
 # 18 Feb 2021
+## 1.5.1
+
+### ADDED
+  1.  copy clipboard to share sign request
+  2. stamp id for signed document
+
+### FIXED
+  1. prepend SIGN in signed doc
 ## 1.5.0 - Dev 1.0
 
 ### ADDED

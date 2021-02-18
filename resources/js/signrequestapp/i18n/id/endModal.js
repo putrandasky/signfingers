@@ -1,7 +1,7 @@
 export default {
   'id.endModal': {
     'title': 'Terimakasih Telah Menggunakan Aplikasi Ini!',
-    'body': 'File anda telah berhasil disimpan dan diamankan menggunakan enkripsi AES-256, penandatangan anda akan segera menerima permintaan tanda tangan anda melalui email. Silahkan periksa email anda.',
+    'body': 'File anda telah berhasil disimpan dan diamankan menggunakan enkripsi AES-256, penandatangan anda akan segera menerima permintaan tanda tangan anda melalui email begitu juga dengan anda. Atau, anda bisa membagika tautan pengajuan tanda tangan anda dengan menekan tombol dibawah ini',
     'button': 'Minta tanda tangan file lain',
     'share': {
       'body': 'Jika anda merasa aplikasi ini sangat membantu, silahkan untuk membagikan dengan menekan tombol dibawah ini.'

@@ -63,6 +63,8 @@
     },
     methods: {
       ...mapActions(['setStep', 'setShowModal', 'restart', 'setLoading']),
+      ...mapMutations(['SIGNERTOKEN']),
+
       handleClickCancel() {
         this.$bvModal.show('requesterFormModal')
       },
@@ -93,7 +95,7 @@
             this.busy = false
             this.$bvModal.hide('confirmSubmitModal')
             this.$bvModal.show('endModal')
-
+            this.SIGNERTOKEN(response.data.signer_token)
           })
           .catch((error) => {
             console.log(error);

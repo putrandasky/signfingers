@@ -2,6 +2,7 @@
 
 namespace App\Notifications\SignRequest;
 
+use App;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -43,6 +44,12 @@ class Requester extends Notification
      */
     public function toMail($notifiable)
     {
+        $signer = App\Signer::where('id', $this->data->signers[0]->id)->first();
+
+        if ($signer->sign_status_id == 3) {
+            return;
+        }
+
         $encrypted_filename = hash('sha256', $this->data->email . $this->data->filename . $this->data->id);
 
         $encrypted_content = Storage::get("requested_files/{$encrypted_filename}");
@@ -56,10 +63,11 @@ class Requester extends Notification
         $name = 'Signfinger';
         return (new MailMessage)
             ->from($url, $name)
-            ->subject("Your Signing Request")
+            ->subject("Your Sign Request #{$this->data->stamp_id}")
             ->markdown('mail.sign_request.requester', ['data' => $this->data])
             ->attach($tempNewFile, [
                 'as' => $this->data->filename,
+                'mime' => 'application/pdf',
             ]);
     }
 

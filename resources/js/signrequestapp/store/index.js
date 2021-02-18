@@ -26,6 +26,7 @@ const ADDSIGNAREA = "ADDSIGNAREA"
 const REMOVESIGNAREA = "REMOVESIGNAREA"
 const RESETSIGNER = "RESETSIGNER"
 const RESETREQUESTER = "RESETREQUESTER"
+const SIGNERTOKEN = "SIGNERTOKEN"
 
 export const store = new Vuex.Store({
   state: {
@@ -59,7 +60,8 @@ export const store = new Vuex.Store({
       width: 0
     },
     signer: [],
-    requester: {}
+    requester: {},
+    signerToken: '',
 
   },
   mutations: {
@@ -142,6 +144,9 @@ export const store = new Vuex.Store({
 
     [ADDREQUESTER](state, n) {
       state.requester = n
+    },
+    [SIGNERTOKEN](state, n) {
+      state.signerToken = n
     },
     [ADDSIGNAREA](state) {
       let totalSigner = state.signer.length

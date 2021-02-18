@@ -44,6 +44,11 @@ class Signer extends Notification
      */
     public function toMail($notifiable)
     {
+        $signer = App\Signer::where('id', $this->data->signers[0]->id)->first();
+
+        if ($signer->sign_status_id == 3) {
+            return;
+        }
 
         $url = 'no-reply@signfinger.com';
         $name = 'Signfinger';
@@ -62,10 +67,11 @@ class Signer extends Notification
 
         return (new MailMessage)
             ->from($url, $name)
-            ->subject("Signing Request")
+            ->subject("Sign Request #{$this->data->stamp_id}")
             ->markdown('mail.sign_request.signer', ['data' => $this->data])
             ->attach($tempNewFile, [
                 'as' => $this->data->filename,
+                'mime' => 'application/pdf',
             ]);
     }
 

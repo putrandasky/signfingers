@@ -56,10 +56,11 @@ class Signer extends Notification
 
         return (new MailMessage)
             ->from($url, $name)
-            ->subject("You Already Signed a Document")
+            ->subject("You Already Signed a Document #{$this->data->requester->stamp_id}")
             ->markdown('mail.responding_sign_request.signer', ['data' => $this->data])
             ->attach($tempNewFile, [
-                'as' => 'SIGNED ' . $this->data->requester->filename,
+                'as' => $this->data->requester->filename . " SIGNED-#{$this->data->requester->stamp_id}",
+                'mime' => 'application/pdf',
             ]);
     }
 
