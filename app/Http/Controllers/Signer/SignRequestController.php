@@ -19,9 +19,9 @@ class SignRequestController extends Controller
     public function store(Request $request)
     {
         $item = json_decode($request->input('itemInput'), true);
-        if ($request->file('itemFile')->extension() != 'pdf') {
-            return response()->json(['status' => 'error', 'message' => 'wrong file type'], 401);
-        }
+        // if ($request->file('itemFile')->extension() != 'pdf') {
+        //     return response()->json(['status' => 'error', 'message' => 'wrong file type'], 401);
+        // }
         $filename = pathinfo($request->file('itemFile')->getClientOriginalName(), PATHINFO_FILENAME);
         $requester = new App\Requester();
         $requester->name = $item['requester']['name'];
