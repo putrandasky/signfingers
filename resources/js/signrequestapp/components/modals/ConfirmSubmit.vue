@@ -1,5 +1,5 @@
 <template>
-  <b-modal visible id="confirmSubmitModal" :no-close-on-backdrop="true" header-class="pb-0" :hide-header-close="true" centered @cancel="handleClickCancel" @ok="submitData">
+  <b-modal id="confirmSubmitModal" :no-close-on-backdrop="true" header-class="pb-0" :hide-header-close="true" centered @cancel="handleClickCancel" @ok="submitData">
     <template v-slot:modal-title>
       <b>
         {{'confirmSubmitModal.title' | trans}}
