@@ -139,7 +139,7 @@ export const store = new Vuex.Store({
       state.signer = []
     },
     [RESETREQUESTER](state, n) {
-      state.requester = []
+      state.requester = {}
     },
 
     [ADDREQUESTER](state, n) {

@@ -1,4 +1,11 @@
 
+# 21 Feb 2021
+## 1.6.0
+### Added
+- Auto delete file after 720 minutes sign request
+- Auto delete file after 30 minutes signed
+- signer cannot open request after file delete
+
 # 18 Feb 2021
 ## 1.5.2 
 ### Fixing

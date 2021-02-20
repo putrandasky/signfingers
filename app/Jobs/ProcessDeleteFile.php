@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class ProcessDeleteFile implements ShouldQueue
 {
@@ -17,9 +18,10 @@ class ProcessDeleteFile implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    protected $encrypted_filename;
+    public function __construct($encrypted_filename)
     {
-        //
+        $this->encrypted_filename = $encrypted_filename;
     }
 
     /**
@@ -29,6 +31,7 @@ class ProcessDeleteFile implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Storage::delete("requested_files/{$this->encrypted_filename}");
+
     }
 }

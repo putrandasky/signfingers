@@ -33,7 +33,9 @@
     mapActions,
     mapMutations
   } from 'vuex'
-
+  import {
+    EventBus
+  } from "@/signrequestapp/event.js";
   export default {
     name: 'ConfirmSubmit',
 
@@ -91,6 +93,7 @@
           })
           .then((response) => {
             console.log(response.data)
+            EventBus.$emit('reset')
             this.busy = false
             this.$bvModal.hide('confirmSubmitModal')
             this.$bvModal.show('endModal')

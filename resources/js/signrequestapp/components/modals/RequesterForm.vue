@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="requesterFormModal" header-class="pb-0" :hide-header-close="true" :no-close-on-backdrop="true" centered ok-variant="warning" @hidden="handleHiddenModal" @ok="submitRequesterData" @cancel="handleCancelClick">
+  <b-modal id="requesterFormModal" header-class="pb-0" :hide-header-close="true" :no-close-on-backdrop="true" centered ok-variant="warning" @hidden="handleHiddenModal" @ok="submitRequesterData" @cancel="handleClickCancel">
     <template v-slot:modal-title>
       <b>
         {{'requesterFormModal.title' | trans}}
@@ -39,6 +39,9 @@
   </b-modal>
 </template>
 <script>
+  import {
+    EventBus
+  } from "@/signrequestapp/event.js";
   import {
     mapState,
     mapActions,
@@ -90,7 +93,9 @@
     },
     created() {},
     mounted() {
-
+      EventBus.$on("reset", data => {
+        this.handleClickCancel()
+      })
     },
     computed: {
 
@@ -117,14 +122,15 @@
     },
     methods: {
       ...mapActions(['setStep', 'setShowModal', 'restart']),
-      ...mapMutations(['ADDREQUESTER', 'REMOVESIGNAREA']),
+      ...mapMutations(['ADDREQUESTER', 'REMOVESIGNAREA', 'RESETREQUESTER']),
       handleHiddenModal() {
         // this.clearData()
       },
-      handleCancelClick() {
+      handleClickCancel() {
         this.REMOVESIGNAREA()
         setTimeout(() => {
           this.clearData()
+          this.RESETREQUESTER()
         }, 100);
 
       },

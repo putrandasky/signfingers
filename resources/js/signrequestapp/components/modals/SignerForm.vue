@@ -30,6 +30,9 @@
 </template>
 <script>
   import {
+    EventBus
+  } from "@/signrequestapp/event.js";
+  import {
     mapState,
     mapActions,
     mapMutations
@@ -73,7 +76,9 @@
     },
     created() {},
     mounted() {
-
+      EventBus.$on("reset", data => {
+        this.handleClickCancel()
+      })
     },
     computed: {
 

@@ -19,26 +19,33 @@ class SignRequestRespondController extends Controller
     }
     public function show(Request $request, $signer_token)
     {
-        $data = App\Signer::where('token', $signer_token)->first();
-        if (!$data) {
+        $signer = App\Signer::where('token', $signer_token)->with('requester')->first();
+
+        if (!$signer) {
             # code...
-            return response()->json(['status' => 'File not found', 'message' => 'The file is not found, please check your link'], 401);
+            return response()->json(['status' => 'File not found', 'message' => 'Request is not found, please check your link'], 401);
         }
+        $signer = App\Signer::where('token', $signer_token)->with('requester', 'signAreas', 'signStatus')->first();
 
-        $data = App\Signer::where('token', $signer_token)->with('requester', 'signAreas', 'signStatus')->first();
-        //check if document already signed
+        $encrypted_filename = hash('sha256', $signer->requester->email . $signer->requester->filename . $signer->requester->id);
+        $is_file_exist = Storage::disk('local')->exists("requested_files/{$encrypted_filename}");
+        if (!$is_file_exist) {
+            # code...
+            return response()->json(['status' => 'File not found', 'message' => 'The file is already deleted'], 401);
+        }
+//check if document already signed
 
-        if ($data->signStatus->id == 3) {
+        if ($signer->signStatus->id == 3) {
             # code...
             return response()->json(['status' => 'Unauthorized', 'message' => 'Your document already signed'], 401);
         }
-        // if ($data->signStatus->id == 1) {
+        // if ($signer->signStatus->id == 1) {
         //     # code...
         //     return response()->json(['status' => 'Unauthorized', 'message' => 'You can not sign this document for now'], 401);
         // }
-        if ($data->signStatus->id == 2 || $data->signStatus->id == 1) {
+        if ($signer->signStatus->id == 2 || $signer->signStatus->id == 1) {
             # code...
-            return response()->json(['status' => 'Authorized', 'signer_data' => $data], 200);
+            return response()->json(['status' => 'Authorized', 'signer_data' => $signer], 200);
         }
 
         // return $data;
@@ -48,6 +55,12 @@ class SignRequestRespondController extends Controller
         $signer = App\Signer::where('token', $signer_token)->with('requester', 'signAreas')->first();
         if ($signer->sign_status_id != 2 && $signer->sign_status_id != 1) {
             return response()->json(['status' => 'Unauthorized', 'message' => 'You dont have any authorization'], 401);
+        }
+        $encrypted_filename = hash('sha256', $signer->requester->email . $signer->requester->filename . $signer->requester->id);
+        $is_file_exist = Storage::disk('local')->exists("requested_files/{$encrypted_filename}");
+        if (!$is_file_exist) {
+            # code...
+            return response()->json(['status' => 'File not found', 'message' => 'The file is already deleted'], 401);
         }
 
         $requester = $signer->requester;

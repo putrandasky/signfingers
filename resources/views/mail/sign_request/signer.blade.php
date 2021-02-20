@@ -9,11 +9,13 @@ Requester : {{$data->name}} <br>
 Message : {{$data->message}}
 @endcomponent
 
-Please sign the document with click the button below.
+Please sign the document  with click the button below.
 
 @component('mail::button', ['url' => config('app.url').'/sign-request/sign-file/'.$data->signers[0]->token])
 Sign Here
 @endcomponent
+
+The file will exist within 12 hours from now
 
 Thank You,<br>
 {{ config('app.name') }}

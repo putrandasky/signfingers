@@ -133,7 +133,7 @@
       handleCopyClipboard() {
         let host = window.location.host
         let pathname = '/sign-request/sign-file/'
-        this.copyTextToClipboard(host + pathname + this.$store.state.signerToken)
+        this.copyTextToClipboard('https://' + host + pathname + this.$store.state.signerToken)
         this.buttonCopyText = '<i class="fa fa-check"></i> Copied!'
         setTimeout(() => {
           this.buttonCopyText = "Click to Copy"

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Jobs\ProcessDeleteFile;
 use App\Notifications\RespondingSignRequest\Requester;
 use App\Notifications\RespondingSignRequest\Signer;
 use Illuminate\Bus\Queueable;
@@ -33,8 +34,10 @@ class ProcessRespondingSignRequest implements ShouldQueue
      */
     public function handle()
     {
+        $encrypted_signed_filename = hash('sha256', $this->data['requester']['email'] . $this->data['requester']['filename'] . $this->data['requester']['id'] . '-Signed');
         Notification::route('mail', $this->data['email'])->notify(new Signer($this->data));
         Notification::route('mail', $this->data['requester']['email'])->notify(new Requester($this->data));
+        dispatch(new ProcessDeleteFIle($encrypted_signed_filename))->delay(now()->addMinutes(30));
 
     }
 }
