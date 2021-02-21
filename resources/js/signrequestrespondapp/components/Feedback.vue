@@ -26,7 +26,7 @@
 <script>
   import {
     EventBus
-  } from "@/signrequestapp/event.js";
+  } from "@/signrequestrespondapp/event.js";
   export default {
     name: 'Feedback',
     data: function() {

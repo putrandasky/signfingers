@@ -38,6 +38,6 @@ class ProcessSignRequest implements ShouldQueue
 
         Notification::route('mail', $this->data['email'])->notify(new Requester($this->data));
         Notification::route('mail', $this->data['signers'][0]['email'])->notify(new Signer($this->data));
-        dispatch(new ProcessDeleteFIle($encrypted_filename))->delay(now()->addMinutes(720));
+        dispatch(new ProcessDeleteFIle($encrypted_filename))->delay(now()->addHours(12));
     }
 }

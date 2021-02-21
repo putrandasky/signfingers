@@ -43,7 +43,7 @@ return [
             'title' => 'No cost or fee',
             'subtitle' => ' Absolutely free digital signature, no cost and fee issue that will intefere your workflow to signature creation of your own document',
         ],
-        'footnote' => '* No file stored for Self Signing feature. Sign Request feature using AES-256 encryption to keep your file securely stored',
+        'footnote' => '* No file stored for Self Signing feature. Sign Request feature using AES-256 encryption to keep your file securely stored and automatically deleted in 12 hours or already signed',
     ],
     'tagline' => 'Digital signature make the one of the most important part of your job will be easier, ever.',
     'how-work' => [

@@ -79,6 +79,7 @@
     </table> -->
     <ending-modal></ending-modal>
     <custom-toast></custom-toast>
+    <feedback></feedback>
     <b-overlay :show="isLoading " rounded="sm" no-wrap variant="dark" spinner-variant="warning">
     </b-overlay>
   </b-container>
@@ -87,16 +88,17 @@
   import debounce from './package/debounce'
   import EndingModal from './modals/Ending'
   import CustomToast from './custom/CustomToast'
-
+  import Feedback from './Feedback'
   import {
     EventBus
-  } from "@/signrequestrespondapp/event.js";
+  } from "@/signrequestrespondapp/event.js"
   export default {
     name: 'App',
     // props: ["draggerData"],
     components: {
       EndingModal,
-      CustomToast
+      CustomToast,
+      Feedback
     },
     data: function() {
       return {

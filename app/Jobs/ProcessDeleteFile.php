@@ -31,6 +31,10 @@ class ProcessDeleteFile implements ShouldQueue
      */
     public function handle()
     {
+        // $is_file_exist = Storage::disk('local')->exists("{$this->encrypted_filename}");
+        // if (!$is_file_exist) {
+        //     return response()->json(['status' => 'File not found', 'message' => 'The file is already deleted'], 401);
+        // }
         Storage::delete("requested_files/{$this->encrypted_filename}");
 
     }

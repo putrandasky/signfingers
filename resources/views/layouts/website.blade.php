@@ -9,7 +9,7 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
   <link rel="manifest" href="{{ asset('images/site.webmanifest') }}">
   <!-- Main Stylesheet File -->
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
   <link href="{{ mix('css/style.css') }}" rel="stylesheet">
 
 

@@ -102,7 +102,7 @@
         let locale = this.$lang.getLocale()
 
 
-        axios.post(`inbox/review/${locale}`, this.review)
+        axios.post(`/inbox/review/${locale}`, this.review)
           .then((response) => {
             EventBus.$emit('showToast', {
               title: this.$filters.trans('endModal.toast.sendReview.title'),

@@ -39,7 +39,7 @@
       <header-control-target v-if="isFileUploaded && step == 3" ref="headerControlTarget" />
       <!-- <header-control-add-signer v-if="isFileUploaded && step == 4" ref="headerControlAddSigner" /> -->
     </mq-layout>
-    <!-- <feedback /> -->
+    <feedback />
     <custom-toast />
 
   </b-container>

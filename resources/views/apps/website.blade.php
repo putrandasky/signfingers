@@ -153,7 +153,9 @@
   <div class="container-fluid text-center bg-warning py-3 text-dark">
     <strong>
 
-      Developed by <a class="text-dark" href="https://alterfingers.com" target="_blank">alterfingers.com</a> © 2020
+      Developed with <i class="fa fa-heart text-danger"></i> by <a class="text-dark" href="https://signfinger.com" target="_blank">signfinger.com</a> © @php
+          echo date("Y")
+      @endphp
     </strong>
   </div>
 </div>

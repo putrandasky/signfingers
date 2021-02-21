@@ -43,7 +43,7 @@ return [
             'title' => 'Tanpa biaya',
             'subtitle' => 'Tanda tangan digital yang benar-benar gratis, tidak ada kendala biaya yang akan mempengaruhi alur kerja dalam akftifitas membuat tanda tangan',
         ],
-        'footnote' => '* Tanpa menyimpan data untuk fitur swa tanda tangan. Fitur mengajukan tanda tangan menggunakan enkripsi AES-256 untuk menjaga data anda tersimpan dengan aman.',
+        'footnote' => '* Tanpa menyimpan data untuk fitur swa tanda tangan. Fitur mengajukan tanda tangan menggunakan enkripsi AES-256 untuk menjaga data anda tersimpan dengan aman dan akan otomatis dihapus dalam 12 jam atau setelah ditandatangani.',
 
     ],
     'tagline' => 'Tanda tangan digital membuat salah satu bagian terpenting dalam pekerjaan anda akan lebih mudah dari yang pernah anda alami.',

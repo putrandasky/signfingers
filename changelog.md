@@ -1,5 +1,13 @@
 
 # 21 Feb 2021
+## 1.6.1
+### Added
+- Feedback on sign request and responding sign request
+### Changed
+- Footer on website
+### Fixed
+- Auto delete file after 720 minutes sign request
+- Auto delete file after 30 minutes signed and instant delete for unsigned file
 ## 1.6.0
 ### Added
 - Auto delete file after 720 minutes sign request
